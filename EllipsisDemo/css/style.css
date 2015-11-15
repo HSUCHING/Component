@@ -1,0 +1,64 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('http://netdna.bootstrapcdn.com/font-awesome/3.1.1/font/fontawesome-webfont.eot?v=3.1.0');
+    src: url('http://netdna.bootstrapcdn.com/font-awesome/3.1.1/font/fontawesome-webfont.eot?#iefix&v=3.1.0') format('embedded-opentype'), url('http://netdna.bootstrapcdn.com/font-awesome/3.1.1/font/fontawesome-webfont.woff?v=3.1.0') format('woff'), url('http://netdna.bootstrapcdn.com/font-awesome/3.1.1/font/fontawesome-webfont.ttf?v=3.1.0') format('truetype'), url('http://netdna.bootstrapcdn.com/font-awesome/3.1.1/font/fontawesome-webfont.svg#fontawesomeregular?v=3.1.0') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    padding: 3em;
+}
+
+p {
+    overflow: hidden;
+    max-width: 30em;
+    line-height: 1.7;
+    margin: 2em auto;
+}
+
+.read-more {
+    display: none;
+}
+
+@-webkit-keyframes moveright {
+    from {left:5px;}
+    to {left:20px;}
+}
+@keyframes moveright {
+    from {left:5px;}
+    to {left:20px;}
+}
+
+@-webkit-keyframes moveleft {
+    from {left:20px;}
+    to {left:5px;}
+}
+@keyframes moveleft {
+    from {left:20px;}
+    to {left:5px;}
+}
+
+a{
+    color: #3ac;
+    text-decoration: none;
+    font-family: 'FontAwesome';
+    position:relative;
+    font-weight: 300;
+    transition: color 200ms ease-in;
+}
+a.more {
+    animation: moveright 1000ms linear infinite;
+    -webkit-animation: moveright 1000ms linear infinite alternate;
+}
+
+a.less {
+    animation: moveleft 1000ms linear infinite;
+    -webkit-animation: moveleft 1000ms linear infinite alternate;
+}
+
+a:hover {
+    color: #c33;
+}

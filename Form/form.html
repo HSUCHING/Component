@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <title></title>
+</head>
+<form id="form1" enctype='application/json' action="PDF.html" method="post">
+    <input name='name' value='Bender'>
+    <select name='hind'>
+        <option selected>Bitable</option>
+        <option>Kickable</option>
+    </select>
+    <input type='checkbox' name='shiny' checked>
+    <input type="submit">
+</form>
+<div id="pop">hello</div>
+<script type="text/javascript">
+    //    $("#form1").submit(function(e){
+    //        console.log("prevent");
+    //        return false;
+    //    });
+
+    document.getElementById("form1").onsubmit=function(e){
+        console.log("aaa");
+        var formData = JSON.stringify($("#myForm").serializeArray());
+        $.ajax({
+            type: "POST",
+            url: "serverUrl",
+            data: formData,
+            success: function(){},
+            dataType: "json",
+            contentType : "application/json"
+        });
+        event.preventDefault();
+    };
+    //    function pott(){
+    //        console.log("dsa");
+    //        event.preventDefault();
+    //    }
+
+    var stringWidth = function(fontSize, content) {
+        var $span = $('<span></span>').hide().css('font-size', fontSize).text(content);
+        var w = $span.appendTo('body').width();
+        $span.remove();
+        return w;
+    };
+
+
+    $(function(){
+        if(console && console.log){
+            console.log(stringWidth('12px', 'Lorem'));
+        }
+    });
+
+</script>
+</body>
+</html>

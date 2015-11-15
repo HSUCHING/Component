@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/videostyle.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/videocontrol.js"></script>
+
+</head>
+<body>
+<div class="demo-container">
+    <article class="video">
+        <video>
+            <!-- MP4 must be first for iPad!
+            removed this as it was causing me guff!
+            interestingly, add it back in to see the error-->
+            <source src="http://files.simey.me/html5-vids/trailer.mp4" type="video/mp4">
+            <!-- Safari / iOS, IE9 -->
+            <source src="http://files.simey.me/html5-vids/trailer.webm" type="video/webm">
+            <!-- Chrome10+, Ffx4+, Opera10.6+ -->
+            <source src="http://files.simey.me/html5-vids/trailer.ogv" type="video/ogg">
+            <!-- Firefox3.6+ / Opera 10.5+ -->
+        </video>
+    </article>
+</div>
+</body>
+</html>
