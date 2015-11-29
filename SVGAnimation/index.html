@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+
+<svg width="100%" height="100%" version="1.1"
+     xmlns="http://www.w3.org/2000/svg">
+
+    <line class="draw" x1="100" y1="100" x2="1200" y2="100"
+          style="stroke:rgb(255,255,11);stroke-width:2"/>
+    <line class="draw" x1="100" y1="120" x2="1200" y2="120"
+          style="stroke:rgb(255,255,11);stroke-width:2"/>
+
+    <rect x="100" y="20" width="100" height="100"
+          style="fill:blue;stroke:pink;stroke-width:5;
+fill-opacity:1;stroke-opacity:0.9"/>
+
+</svg>
+<script type="text/javascript" src="js/DrawSVGPlugin.js"></script>
+<script type="text/javascript" src="js/TweenMax.js"></script>
+<script type="text/javascript">
+//    TweenMax.staggerFrom("line", 2, {drawSVG:0}, 0.1);
+    var tl1 = new TimelineLite();
+    tl1.staggerFrom("line", 10, {drawSVG:0}, 0);
+    tl1.staggerFrom("rect", 100, {drawSVG:0}, 0);
+    var tl2 = new TimelineLite();
+</script>
+</body>
+</html>
