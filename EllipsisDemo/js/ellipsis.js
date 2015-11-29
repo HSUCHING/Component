@@ -3,7 +3,7 @@
  */
 $(document).ready(function () {
 	$('p').each(function () {
-		var trimLength = 300;
+		var trimLength = 100;
 		var trimMargin = 1.2; // don't trim just a couple of words
 		if ($(this).text().length > (trimLength * trimMargin)) {
 			var text = $(this).text();
