@@ -1,0 +1,108 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+}
+
+body {
+    line-height: 1
+}
+
+a img {
+    border: none
+}
+
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+a {
+    color: #CCC;
+    text-decoration: none
+}
+
+html {
+    background: #2F2F2F
+}
+
+body {
+    background: #2F2F2F;
+    min-height: 100%;
+    font-family: helvetica, arial, sans-serif;
+    overflow-x: hidden;
+    margin: 0
+}
+
+div#slider {
+    margin: 40px auto;
+    width: 750px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -o-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -khtml-border-radius: 3px;
+    border-radius: 3px;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    box-sizing: content-box;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 8px rgba(0, 0, 0, 0.9) inset
+}
+
+div#slider div.fluxslider div.surface {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    box-sizing: content-box
+}
+
+div#slider div.fluxslider ul.pagination {
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -ms-box-sizing: content-box;
+    box-sizing: content-box;
+    padding: 10px 0 !important;
+    overflow: hidden
+}
+
+div#slider div.fluxslider ul.pagination li {
+    text-indent: 10000px;
+    height: 8px;
+    width: 8px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1)
+}
+
+div#slider div.fluxslider ul.pagination li.current {
+    background: rgba(255, 255, 255, 0.2)
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    font-size: 0.7em;
+    margin-top: 4em;
+    color: #666
+}
+
+footer p {
+    margin-bottom: 2em
+}
+
