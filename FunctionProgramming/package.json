@@ -1,0 +1,17 @@
+{
+  "name": "functionprogramming",
+  "version": "1.0.0",
+  "description": "Function programming",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Function"
+  ],
+  "author": "Hsuching",
+  "license": "MIT",
+  "devDependencies": {
+    "underscore": "^1.8.3"
+  }
+}

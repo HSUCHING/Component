@@ -1,0 +1,31 @@
+#infinite_list{
+    margin:20px auto;
+    width:300px;
+    height:450px;
+    border:5px solid black;
+    border-radius:5px;
+    position:relative;
+    overflow:hidden;
+}
+
+#infinite_list>#wrapped{
+    position:absolute;
+    padding:0px;
+    margin: 0px;
+    width:100%;
+}
+
+#infinite_list>#wrapped div:nth-child(odd){
+    background:linear-gradient(#ddd, #ccc);
+}
+
+#infinite_list>#wrapped div:nth-child(even){
+    background:linear-gradient(#fff, #eee);
+}
+
+#infinite_list>#wrapped>.item{
+    min-height:80px;
+    border:1px solid red;
+    transition:all 3s;
+    border-radius:2px;
+}
