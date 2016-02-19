@@ -1,9 +1,19 @@
 /**
- * Created by chinghsu on 16/2/18.
+ * Created by chinghsu on 16/2/16.
  */
 
-//(1)dataGetter
+var needsRender = true;
+var topOffset;
+
+//dataGetter
 var dataGetter = (function () {
+
+	function injectScript(url) {
+		var script = document.createElement('script');
+		script.async = true;
+		script.src = url;
+		document.body.appendChild(script);
+	}
 
 	return {
 		getDataPage: function (pageNum, callbackName) {
@@ -12,8 +22,7 @@ var dataGetter = (function () {
 	};
 })();
 
-
-//(2)template
+//template
 var template = (function () {
 
 	var getInitialState = function () {
@@ -34,7 +43,40 @@ var template = (function () {
 
 })();
 
-//(3)Layer
+LayersPool = function () {
+	var layersByIdentifier = {};
+
+	function addLayer(layer, hide) {
+		var layerIdentifier = layer.getIdentifier();
+		if (layersByIdentifier[layerIdentifier] == null) {
+			layersByIdentifier[layerIdentifier] = [];
+		}
+		layersByIdentifier[layerIdentifier].push(layer);
+		layer.setItemOffset(-10000);
+		StyleHelpers.applyElementStyle(layer.getDomElement(), {display: 'none'});
+		if (hide) {
+			StyleHelpers.applyElementStyle(layer.getDomElement(), {display: 'none'})
+		}
+	}
+
+	function borrowLayerWithIdentifier(identifier) {
+		if (layersByIdentifier[identifier] == null) {
+			return null;
+		}
+		var layer = layersByIdentifier[identifier].pop();
+		if (layer != null) {
+			StyleHelpers.applyElementStyle(layer.getDomElement(), {display: 'block'})
+		}
+		return layer;
+	}
+
+	return {
+		addLayer: addLayer,
+		borrowLayerWithIdentifier: borrowLayerWithIdentifier
+	}
+}
+
+var MIN_FPS = 30, MAX_TIME_PER_FRAME = 1000 / MIN_FPS;
 var Layer = function (parentElement) {
 	var listItemElement = null,
 		identifier = "",
@@ -112,43 +154,7 @@ var Layer = function (parentElement) {
 };
 
 
-//(4)LayerPool
-var MIN_FPS = 30, MAX_TIME_PER_FRAME = 1000 / MIN_FPS;
-LayersPool = function () {
-	var layersByIdentifier = {};
-
-	function addLayer(layer, hide) {
-		var layerIdentifier = layer.getIdentifier();
-		if (layersByIdentifier[layerIdentifier] == null) {
-			layersByIdentifier[layerIdentifier] = [];
-		}
-		layersByIdentifier[layerIdentifier].push(layer);
-		layer.setItemOffset(-10000);
-		StyleHelpers.applyElementStyle(layer.getDomElement(), {display: 'none'});
-		if (hide) {
-			StyleHelpers.applyElementStyle(layer.getDomElement(), {display: 'none'})
-		}
-	}
-
-	function borrowLayerWithIdentifier(identifier) {
-		if (layersByIdentifier[identifier] == null) {
-			return null;
-		}
-		var layer = layersByIdentifier[identifier].pop();
-		if (layer != null) {
-			StyleHelpers.applyElementStyle(layer.getDomElement(), {display: 'block'})
-		}
-		return layer;
-	}
-
-	return {
-		addLayer: addLayer,
-		borrowLayerWithIdentifier: borrowLayerWithIdentifier
-	}
-}
-
-
-//(5)StyleHelpers
+//	StyleHelpers
 
 var StyleHelpers = (function () {
 	var applyElementStyle = function (element, styleObj) {
@@ -175,7 +181,7 @@ var StyleHelpers = (function () {
 })();
 
 
-//(6) AnimationFrameHelper
+//AnimationFrameHelper
 var AnimationFrameHelper = (function () {
 	var measuredFPS = 60,
 		runAnimation = false;
@@ -215,8 +221,9 @@ var AnimationFrameHelper = (function () {
 	}
 })();
 
-//(7) ScrollbarRenderer
-var ScrollbarRenderer = function(rootElement){
+
+//ScrollbarRenderer
+var ScrollbarRenderer = function (rootElement) {
 	var scrollbar = document.createElement('div'),
 		clientHeight = rootElement.parentElement.clientHeight;
 
@@ -231,8 +238,9 @@ var ScrollbarRenderer = function(rootElement){
 	});
 	rootElement.appendChild(scrollbar);
 
-	function render(topOffset, listHeight){
+	function render(topOffset, listHeight) {
 		var attachedElement = rootElement.parentElement,
+		//var attachedElement = rootElement,
 			scrollbarHeight = Math.max(10, Math.floor(clientHeight / listHeight * clientHeight)),
 			scrollbarPos = Math.floor(topOffset / (listHeight - clientHeight) * (clientHeight - scrollbarHeight)),
 			heightInPx = scrollbarHeight + 'px';
@@ -243,8 +251,9 @@ var ScrollbarRenderer = function(rootElement){
 		StyleHelpers.applyTransformStyle(scrollbar, 'matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0' + ',' + ( scrollbarPos) + ', 0, 1)');
 	}
 
-	function refresh(){
+	function refresh() {
 		clientHeight = rootElement.parentElement.clientHeight;
+		//clientHeight = rootElement.clientHeight;
 	}
 
 	return {
@@ -253,11 +262,8 @@ var ScrollbarRenderer = function(rootElement){
 	}
 };
 
-//(7)VerticalScroller
-var SCROLLING_TIME_CONSTANT = 525;
-
-var VerticalScroller = function (parentElement, callback) {
-
+//ScrollerContainer
+var Scroller = function (parentElement, direction, callback) {
 	var timestamp = 0,
 		minOffset = 0,
 		maxOffset = 0,
@@ -268,6 +274,7 @@ var VerticalScroller = function (parentElement, callback) {
 		reference = 0,
 		offset = 0,
 		target = 0,
+		SCROLLING_TIME_CONSTANT = 525,
 		touchPositions = [];
 
 	parentElement.addEventListener('touchstart', tap);
@@ -277,7 +284,7 @@ var VerticalScroller = function (parentElement, callback) {
 	parentElement.addEventListener('mousemove', drag);
 	parentElement.addEventListener('mouseup', release);
 
-	function ypos (e) {
+	function ypos(e) {
 		// touch event
 		if (e.targetTouches && (e.targetTouches.length >= 1)) {
 			return e.targetTouches[0].clientY;
@@ -287,12 +294,12 @@ var VerticalScroller = function (parentElement, callback) {
 		return e.clientY;
 	}
 
-	function scroll (y) {
+	function scroll(y) {
 		offset = y;//Math.min( Math.max(y, minOffset), maxOffset);
 		callback(y);
 	}
 
-	function autoScroll () {
+	function autoScroll() {
 		var elapsed, delta, newOffset;
 
 		if (amplitude) {
@@ -301,7 +308,7 @@ var VerticalScroller = function (parentElement, callback) {
 			newOffset = target - delta;
 
 			if (newOffset < minOffset) {
-				if (target - delta >= minOffset-2){
+				if (target - delta >= minOffset - 2) {
 					scroll(minOffset);
 					return;
 				}
@@ -309,7 +316,7 @@ var VerticalScroller = function (parentElement, callback) {
 				bounce(true);
 
 			} else if (newOffset > maxOffset) {
-				if (target - delta <= maxOffset + 2){
+				if (target - delta <= maxOffset + 2) {
 					scroll(maxOffset);
 					return;
 				}
@@ -324,19 +331,19 @@ var VerticalScroller = function (parentElement, callback) {
 		}
 	}
 
-	function bounce (top){
+	function bounce(top) {
 
 		var finalDestination = top ? minOffset : maxOffset,
 			isBouncingBack = top && amplitude > 0 || !top && amplitude < 0;
 
-		if (amplitude == 0){
+		if (amplitude == 0) {
 			return;
 		}
 
 		var elapsed = Date.now() - timestamp;
-		var delta = amplitude * Math.exp(-elapsed / (target == finalDestination ? 125 : SCROLLING_TIME_CONSTANT) );
+		var delta = amplitude * Math.exp(-elapsed / (target == finalDestination ? 125 : SCROLLING_TIME_CONSTANT));
 
-		if ( isBouncingBack && Math.abs(delta) < 2 ) {
+		if (isBouncingBack && Math.abs(delta) < 2) {
 			scroll(top ? minOffset : maxOffset);
 			return;
 		}
@@ -356,13 +363,13 @@ var VerticalScroller = function (parentElement, callback) {
 
 		}
 
-		requestAnimationFrame(function(){
+		requestAnimationFrame(function () {
 			bounce(top);
 		});
 		return;
 	}
 
-	function tap (e) {
+	function tap(e) {
 		pressed = true;
 		reference = ypos(e);
 
@@ -375,7 +382,7 @@ var VerticalScroller = function (parentElement, callback) {
 		e.stopPropagation();
 	}
 
-	function drag (e) {
+	function drag(e) {
 		var y, delta, scaleFactor = offset < minOffset || offset > maxOffset ? 0.5 : 1;
 		if (pressed) {
 			recordTouches(e);
@@ -405,7 +412,7 @@ var VerticalScroller = function (parentElement, callback) {
 		}
 	}
 
-	function release (e) {
+	function release(e) {
 		pressed = false;
 
 		var endPos = touchPositions.length - 1;
@@ -431,7 +438,7 @@ var VerticalScroller = function (parentElement, callback) {
 		e.stopPropagation();
 	}
 
-	function scrollTo(y, animate){
+	function scrollTo(y, animate) {
 		var maxAnimateDelta = 4000;
 		if (animate) {
 			if (y - offset > maxAnimateDelta) {
@@ -450,11 +457,11 @@ var VerticalScroller = function (parentElement, callback) {
 		}
 	}
 
-	function changeScrollPosition (y) {
+	function changeScrollPosition(y) {
 		scroll(y);
 	}
 
-	function setDimensions(min, max){
+	function setDimensions(min, max) {
 		minOffset = min;
 		maxOffset = max;
 	}
@@ -465,23 +472,193 @@ var VerticalScroller = function (parentElement, callback) {
 	}
 };
 
+//ListItems
+var ListItemsRenderer = function (attachedElement, scrollElement, listConfig, pageCallback) {
+
+	var visibleHeight = attachedElement.clientHeight,
+		itemWidth = attachedElement.clientWidth,
+		renderedListItems = [],
+		layersPool = new LayersPool();
+
+	function render(topOffset, atIndex, offsetFromTop) {
+		var startRenderTime = new Date().getTime();
+
+		if (typeof atIndex == 'number' && atIndex >= 0) {
+			while (renderedListItems.length > 0) {
+				layersPool.addLayer(renderedListItems.pop());
+			}
+
+			var onlyRenderedItem = renderListItem(atIndex);
+			onlyRenderedItem.setItemOffset(topOffset - (offsetFromTop || 0));
+			renderedListItems.push(onlyRenderedItem);
+		}
 
 
-//(8)InfiniteList
-DEFAULT_ITEM_HEIGHT = 2;
+		var topRenderedItem = renderedListItems[0],
+			bottomRenderedItem = renderedListItems[renderedListItems.length - 1];
+
+		while (topRenderedItem && topRenderedItem.getItemOffset() > topOffset && topRenderedItem.getItemIndex() > 0) {
+			topRenderedItem = renderBefore(topRenderedItem);
+			if (new Date().getTime() - startRenderTime > MAX_TIME_PER_FRAME) {
+				return true;
+			}
+		}
+
+		if (bottomRenderedItem.getItemIndex() < listConfig.itemsCount && bottomRenderedItem.getIdentifier() == "$LoadMore") {
+			var bottomIndex = bottomRenderedItem.getItemIndex();
+			layersPool.addLayer(renderedListItems.pop());
+			if (renderedListItems.length > 0) {
+				bottomRenderedItem = renderedListItems[renderedListItems.length - 1];
+			} else {
+				return render(topOffset, bottomIndex);
+			}
+		}
+		while (bottomRenderedItem && bottomRenderedItem.getItemOffset() + bottomRenderedItem.getItemHeight() < topOffset + visibleHeight && bottomRenderedItem.getItemIndex() < listConfig.itemsCount) {
+			bottomRenderedItem = renderAfter(bottomRenderedItem);
+			if (new Date().getTime() - startRenderTime > MAX_TIME_PER_FRAME) {
+				return true;
+			}
+		}
+
+		while (renderedListItems.length > 1 && topRenderedItem && topRenderedItem.getItemOffset() + topRenderedItem.getItemHeight() < topOffset) {
+			layersPool.addLayer(renderedListItems.shift());
+			topRenderedItem = renderedListItems[0];
+		}
+
+		while (renderedListItems.length > 1 && bottomRenderedItem && bottomRenderedItem.getItemOffset() > topOffset + visibleHeight) {
+			layersPool.addLayer(renderedListItems.pop());
+			bottomRenderedItem = renderedListItems[renderedListItems.length - 1];
+		}
+
+		return false;
+	}
+
+	function renderBefore(listItem) {
+		var newItem = renderListItem(listItem.getItemIndex() - 1);
+		if (newItem) {
+			newItem.setItemOffset(listItem.getItemOffset() - newItem.getItemHeight());
+			renderedListItems.unshift(newItem);
+		}
+		return newItem;
+	}
+
+	function renderAfter(listItem) {
+		var newItem = renderListItem(listItem.getItemIndex() + 1);
+		if (newItem) {
+			newItem.setItemOffset(listItem.getItemOffset() + listItem.getItemHeight());
+			renderedListItems.push(newItem);
+		}
+		return newItem;
+	}
+
+	function renderListItem(index) {
+		if (index == listConfig.itemsCount) {
+			if (!listConfig.hasMore) {
+				return null;
+			}
+			return renderLoadMore();
+		}
+
+		var itemIdentifier = (listConfig.itemTypeGetter ? listConfig.itemTypeGetter(index) : ''),
+			height = listConfig.itemHeightGetter && listConfig.itemHeightGetter(index),
+			layer = borrowLayerForIndex(index, itemIdentifier, height);
+		listConfig.itemRenderer(index, layer.getDomElement());
+		return layer;
+	}
+
+	/*
+	 Borrow a layer from the LayersPool and attach it to a certain item at index.
+	 */
+	function borrowLayerForIndex(index, identifier, height) {
+		var layerIdentifier = identifier || (listConfig.itemTypeGetter ? listConfig.itemTypeGetter(index) : '');
+		var layer = layersPool.borrowLayerWithIdentifier(layerIdentifier);
+		if (layer == null) {
+			layer = new Layer(scrollElement);
+		}
+		//index, topOffset, renderer, width, height, itemIdentifier
+		var itemHeight = height || listConfig.itemHeightGetter && listConfig.itemHeightGetter(index);
+		layer.attach(index, itemWidth - 9, itemHeight, layerIdentifier);
+		//listItems.push(layer);
+		return layer;
+	}
+
+	function renderLoadMore() {
+		if (renderedListItems.length == 0 || renderedListItems[renderedListItems.length - 1].getIdentifier() != '$LoadMore') {
+			var loadMoreLayer = borrowLayerForIndex(listConfig.itemsCount, '$LoadMore');
+			listConfig.loadMoreRenderer(listConfig.itemsCount, loadMoreLayer.getDomElement());
+			pageCallback();
+			return loadMoreLayer;
+		}
+
+		return renderedListItems[renderedListItems.length - 1];
+	}
+
+	function refresh() {
+		visibleHeight = attachedElement.clientHeight;
+		itemWidth = attachedElement.clientWidth;
+		renderedListItems.forEach(function (layer) {
+			layersPool.addLayer(layer, true)
+		});
+		renderedListItems = [];
+	}
+
+	function getRenderedItems() {
+		return renderedListItems;
+	}
+
+	return {
+		render: render,
+		refresh: refresh,
+		getRenderedItems: getRenderedItems
+	};
+};
+
+var listCallback = null;
+var dataResults = [];
+window.dataCallback = function (results) {
+	for (var i = 0; i < 30; i++) {
+		dataResults.push(i + 1);
+	}
+	//dataResults = dataResults.concat(results);
+	//for (var i = 0; i < dataResults.length; ++i) {
+	//	dataResults[i].index = i;
+	//}
+	//listCallback(results.length, true);
+	setTimeout(function () {
+		// f1的任务代码
+		listCallback(dataResults.length, true);
+	}, 1000);
+
+}
 
 var InfiniteList = function (listConfig) {
 
 	var config = {
 			itemHeightGetter: null,
-			itemRenderer: null,
+			itemRenderer: function (index, domElement) {
+				template.render(dataResults[index], domElement);
+				//ReactDOM.render(React.createElement(template, listData[index]), domElement);
+			},
 			itemTypeGetter: null,
-			pageFetcher: null,
+			dataFetch: function (fromIndex, callback) {
+				//if (fromIndex == ITEMS_COUNT) {
+				//	callback(0, false);
+				//	return;
+				//}
+				//
+				//setTimeout(function () {
+				//	callback(100, true);
+				//}, 2000);
+				listCallback = callback;
+				dataGetter.getDataPage(fromIndex / itemCount + 1, 'dataCallback');
+			},
 			loadMoreRenderer: function (index, domElement) {
 				domElement.innerHTML = '<div style="margin-left:14px;height:50px">Loading...</div>';
 			},
-			hasMore: false,
-			itemsCount: 0
+			//hasMore: false,
+			hasMore: true,
+			itemsCount: 100
+			//itemsCount: 0
 		},
 		parentElement = null,
 		parentElementHeight,
@@ -494,7 +671,9 @@ var InfiniteList = function (listConfig) {
 		topOffset = 0,
 		scrollToIndex = 0,
 		topItemOffset = 0,
+		itemCount = 20,
 		needsRender = true;
+
 
 	for (key in listConfig) {
 		if (listConfig.hasOwnProperty(key)) {
@@ -508,13 +687,15 @@ var InfiniteList = function (listConfig) {
 		config.hasMore = initialPageConfig.hasMore || false;
 	}
 
-	function attach(domElement, touchProvider) {
-		parentElement = domElement;
-		initializeRootElement(domElement);
+
+	function attach(id_Dom, touchProvider) {
+		parentElement = document.getElementById(id_Dom);
+		initializeRootElement(parentElement);
 		scrollbarRenderer = new ScrollbarRenderer(rootElement);
-		itemsRenderer = new ListItemsRenderer(domElement, scrollElement, config, loadMoreCallback);
-		scroller = new VerticalScroller(
+		itemsRenderer = new ListItemsRenderer(parentElement, scrollElement, config, loadMoreCallback);
+		scroller = new Scroller(
 			parentElement,
+			"Vertical",
 			function (top) {
 				topOffset = (top || 0);
 				needsRender = true;
@@ -535,7 +716,7 @@ var InfiniteList = function (listConfig) {
 
 	function detach() {
 		AnimationFrameHelper.stopAnimationLoop();
-		parentElement.removeChild(rootElement);
+		//parentElement.removeChild(rootElement);
 		window.removeEventListener('resize', refresh.bind(this));
 	}
 
@@ -641,7 +822,7 @@ var InfiniteList = function (listConfig) {
 	}
 
 	function loadMoreCallback() {
-		config.pageFetcher(config.itemsCount, function (pageItemsCount, hasMore) {
+		config.dataFetch(config.itemsCount, function (pageItemsCount, hasMore) {
 			config.hasMore = hasMore;
 			config.itemsCount += pageItemsCount;
 			calculateHeights(config.itemsCount - pageItemsCount);
@@ -709,187 +890,5 @@ var InfiniteList = function (listConfig) {
 };
 
 
-//(9) ListItems
-var ListItemsRenderer = function(attachedElement, scrollElement, listConfig, pageCallback){
-
-	var visibleHeight = attachedElement.clientHeight,
-		itemWidth = attachedElement.clientWidth,
-		renderedListItems = [],
-		layersPool = new LayersPool();
-
-	function render(topOffset, atIndex, offsetFromTop){
-		var startRenderTime = new Date().getTime();
-
-		if ( typeof atIndex == 'number' &&  atIndex >= 0){
-			while (renderedListItems.length > 0) {
-				layersPool.addLayer(renderedListItems.pop());
-			}
-
-			var onlyRenderedItem = renderListItem(atIndex);
-			onlyRenderedItem.setItemOffset(topOffset - (offsetFromTop || 0));
-			renderedListItems.push(onlyRenderedItem);
-		}
 
 
-		var topRenderedItem = renderedListItems[0],
-			bottomRenderedItem = renderedListItems[renderedListItems.length - 1];
-
-		while (topRenderedItem && topRenderedItem.getItemOffset() > topOffset && topRenderedItem.getItemIndex() > 0){
-			topRenderedItem = renderBefore(topRenderedItem);
-			if (new Date().getTime() - startRenderTime > MAX_TIME_PER_FRAME) {
-				return true;
-			}
-		}
-
-		if (bottomRenderedItem.getItemIndex() < listConfig.itemsCount && bottomRenderedItem.getIdentifier() == "$LoadMore") {
-			var bottomIndex = bottomRenderedItem.getItemIndex();
-			layersPool.addLayer(renderedListItems.pop());
-			if (renderedListItems.length > 0) {
-				bottomRenderedItem = renderedListItems[renderedListItems.length - 1];
-			} else {
-				return render(topOffset, bottomIndex);
-			}
-		}
-		while (bottomRenderedItem && bottomRenderedItem.getItemOffset() + bottomRenderedItem.getItemHeight() < topOffset + visibleHeight && bottomRenderedItem.getItemIndex() < listConfig.itemsCount) {
-			bottomRenderedItem = renderAfter(bottomRenderedItem);
-			if (new Date().getTime() - startRenderTime > MAX_TIME_PER_FRAME) {
-				return true;
-			}
-		}
-
-		while (renderedListItems.length > 1 && topRenderedItem && topRenderedItem.getItemOffset() + topRenderedItem.getItemHeight() < topOffset) {
-			layersPool.addLayer(renderedListItems.shift());
-			topRenderedItem = renderedListItems[0];
-		}
-
-		while (renderedListItems.length > 1 && bottomRenderedItem && bottomRenderedItem.getItemOffset() > topOffset + visibleHeight) {
-			layersPool.addLayer(renderedListItems.pop());
-			bottomRenderedItem = renderedListItems[renderedListItems.length - 1];
-		}
-
-		return false;
-	}
-
-	function renderBefore(listItem){
-		var newItem = renderListItem(listItem.getItemIndex() - 1);
-		if (newItem) {
-			newItem.setItemOffset(listItem.getItemOffset() - newItem.getItemHeight());
-			renderedListItems.unshift(newItem);
-		}
-		return newItem;
-	}
-
-	function renderAfter(listItem){
-		var newItem = renderListItem(listItem.getItemIndex() + 1);
-		if (newItem) {
-			newItem.setItemOffset(listItem.getItemOffset() + listItem.getItemHeight());
-			renderedListItems.push(newItem);
-		}
-		return newItem;
-	}
-
-	function renderListItem (index) {
-		if (index == listConfig.itemsCount) {
-			if (!listConfig.hasMore) {
-				return null;
-			}
-			return renderLoadMore();
-		}
-
-		var itemIdentifier = (listConfig.itemTypeGetter ? listConfig.itemTypeGetter(index) : ''),
-			height = listConfig.itemHeightGetter && listConfig.itemHeightGetter(index),
-			layer = borrowLayerForIndex(index, itemIdentifier, height);
-		listConfig.itemRenderer(index, layer.getDomElement());
-		return layer;
-	}
-
-	/*
-	 Borrow a layer from the LayersPool and attach it to a certain item at index.
-	 */
-	function borrowLayerForIndex(index, identifier, height) {
-		var layerIdentifier = identifier || (listConfig.itemTypeGetter ? listConfig.itemTypeGetter(index) : '');
-		var layer = layersPool.borrowLayerWithIdentifier(layerIdentifier);
-		if (layer == null) {
-			layer = new Layer(scrollElement);
-		}
-		//index, topOffset, renderer, width, height, itemIdentifier
-		var itemHeight = height || listConfig.itemHeightGetter && listConfig.itemHeightGetter(index);
-		layer.attach(index, itemWidth - 9, itemHeight, layerIdentifier);
-		//listItems.push(layer);
-		return layer;
-	}
-
-	function renderLoadMore(){
-		if (renderedListItems.length == 0 || renderedListItems[renderedListItems.length - 1].getIdentifier() != '$LoadMore') {
-			var loadMoreLayer = borrowLayerForIndex(listConfig.itemsCount, '$LoadMore');
-			listConfig.loadMoreRenderer(listConfig.itemsCount, loadMoreLayer.getDomElement());
-			pageCallback();
-			return loadMoreLayer;
-		}
-
-		return renderedListItems[renderedListItems.length - 1];
-	}
-
-	function refresh(){
-		visibleHeight = attachedElement.clientHeight;
-		itemWidth = attachedElement.clientWidth;
-		renderedListItems.forEach(function(layer){
-			layersPool.addLayer(layer, true)
-		});
-		renderedListItems = [];
-	}
-
-	function getRenderedItems(){
-		return renderedListItems;
-	}
-
-	return {
-		render: render,
-		refresh: refresh,
-		getRenderedItems: getRenderedItems
-	};
-};
-
-var listCallback = null,
-	dataResults = [];
-window.dataCallback = function (results) {
-	for (var i = 0; i < 30; i++) {
-		dataResults.push(i + 1);
-	}
-	//dataResults = dataResults.concat(results);
-	//for (var i = 0; i < dataResults.length; ++i) {
-	//	dataResults[i].index = i;
-	//}
-	//listCallback(results.length, true);
-	setTimeout(function () {
-		// f1的任务代码
-		listCallback(dataResults.length, true);
-	}, 100);
-
-}
-
-
-
-var list = new InfiniteList({
-
-	itemRenderer: function(index, domElement){
-		template.render(dataResults[index], domElement);
-	},
-
-	loadMoreRenderer: function(index, domElement){
-		domElement.innerHTML = '<div style="margin-left:14px;height:50px; background-image:url(../resources/loading.gif); background-repeat: no-repeat"><span style="margin-left: 40px">Loading...</span></div>';
-	},
-
-	pageFetcher: function(fromIndex, callback){
-		listCallback = callback;
-		dataGetter.getDataPage(fromIndex / 100 + 1, 'dataCallback');
-	},
-
-	initialPage: {
-		hasMore: true,
-		itemsCount: 0
-	}
-
-});
-
-list.attach(document.getElementById("infinite_list"));
