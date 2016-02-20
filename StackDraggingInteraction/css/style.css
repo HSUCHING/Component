@@ -1,0 +1,117 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700|Sacramento);
+@font-face {
+    font-family: 'codropsicons';
+    src:url('../fonts/codropsicons/codropsicons.eot');
+    src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+    url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+    url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+    url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Lato', Arial, sans-serif;
+    background: #add8df;
+    color: #fff;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-weight: 300;
+}
+
+
+*,
+*:after,
+*::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.stackContainer {
+    max-width: 700px;
+    margin:200px auto;
+    width: 500px;
+    height: 500px;
+    text-align: center;
+    padding:0px;
+}
+
+.stack {
+    position: relative;
+    margin: 40px auto;
+    padding: 0;
+    width: 340px;
+    height: 380px;
+    list-style: none;
+    -webkit-perspective: 1000px;
+    -webkit-perspective-origin: 50% 150%;
+    perspective: 1000px;
+    perspective-origin: 50% 150%;
+}
+
+.stack li {
+    position: absolute;
+    z-index: 1;
+    width: 340px;
+    height: 380px;
+    border-width: 60px 20px;
+    border-style: solid;
+    border-color: #fff;
+    box-shadow: 0 10px 7px -7px rgba(0,0,0,0.12), 0 0 4px rgba(0,0,0,0.1);
+    /*opacity: 0;*/
+    cursor: pointer;
+    -webkit-transform: translate3d(0,0,-180px);
+    transform: translate3d(0,0,-180px);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.stack li:nth-child(4n) {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.stack li:nth-child(4n+1){
+    -webkit-transform: rotate(-8deg);
+    transform: rotate(-8deg);
+}
+
+.stack li:nth-child(4n+2) {
+    -webkit-transform: rotate(-2deg);
+    transform: rotate(-2deg);
+}
+
+.stack li:nth-child(4n+3) {
+    -webkit-transform: rotate(8deg);
+    transform: rotate(8deg);
+}
+
+
+
+
+.stack li img {
+    display: block;
+}
+
+.stack li h5 {
+    margin: 0 5px;
+    color: #143f51;
+    height: 60px;
+    text-align: right;
+    font-size: 1.4em;
+    font-family: "Sacramento", cursive;
+    line-height: 60px;
+}
+
+.stack li.animate {
+    -webkit-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.stack li.move-back {
+    /* http://matthewlein.com/ceaser/ */
+    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.470, 1); /* older webkit */
+    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.470, 1.515);
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.470, 1.515);
+}

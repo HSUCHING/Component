@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Dragging Interaction</title>
+    <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="js/modernizr.custom.js"></script>
+</head>
+<body>
+<div class="stackContainer">
+    <ul id="stack" class="stack">
+        <li><img src="img/1.jpg" alt="01"/><h5>Saudade</h5></li>
+        <li><img src="img/2.jpg" alt="02"/><h5>Tuqburni</h5></li>
+        <li><img src="img/3.jpg" alt="03"/><h5>Retrouvailles</h5></li>
+        <li><img src="img/4.jpg" alt="04"/><h5>Onsra</h5></li>
+        <li><img src="img/5.jpg" alt="05"/><h5>Mamihlapinatapai</h5></li>
+        <li><img src="img/6.jpg" alt="06"/><h5>Koi No Yokan</h5></li>
+    </ul>
+</div>
+</body>
+<script type="text/javascript" src="js/drag.js"></script>
+<script type="text/javascript">
+    new ElastiStack( document.getElementById( 'stack' ) );
+</script>
+</html>
