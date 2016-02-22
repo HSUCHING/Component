@@ -1,7 +1,4 @@
 /**
- * Created by chinghsu on 16/2/22.
- */
-/**
  * Created by chinghsu on 16/2/20.
  */
 (function (t) {
@@ -376,6 +373,8 @@
 ;
 
 
+
+
 (function (window) {
 
 	'use strict';
@@ -391,7 +390,7 @@
 
 	// support
 	var is3d = !!getStyleProperty('perspective'),
-		supportTransitions = true,
+		supportTransitions = Modernizr.csstransitions,
 	// transition end event name
 		transEndEventNames = {
 			'WebkitTransition': 'webkitTransitionEnd',
@@ -400,9 +399,9 @@
 			'msTransition': 'MSTransitionEnd',
 			'transition': 'transitionend'
 		},
-		transEndEventName = transEndEventNames["transition"];
+		transEndEventName = transEndEventNames[Modernizr.prefixed('transition')];
 
-	function StackInteraction(el, options) {
+	function ElastiStack(el, options) {
 		this.container = el;
 		this.options = extend({}, this.options);
 		extend(this.options, options);
@@ -415,7 +414,7 @@
 		el.style.transform = tval;
 	}
 
-	StackInteraction.prototype.options = {
+	ElastiStack.prototype.options = {
 		// distDragBack: if the user stops dragging the image in a area that does not exceed [distDragBack]px for either x or y then the image goes back to the stack
 		distDragBack: 200,
 		// distDragMax: if the user drags the image in a area that exceeds [distDragMax]px for either x or y then the image moves away from the stack
@@ -426,7 +425,7 @@
 		}
 	};
 
-	StackInteraction.prototype._init = function () {
+	ElastiStack.prototype._init = function () {
 		// items
 		this.items = [].slice.call(this.container.children);
 		// total items
@@ -443,7 +442,7 @@
 		this._initEvents();
 	};
 
-	StackInteraction.prototype._initEvents = function () {
+	ElastiStack.prototype._initEvents = function () {
 		var self = this;
 		this.draggie.on('dragStart', function (i, e, p) {
 			self._onDragStart(i, e, p);
@@ -456,35 +455,29 @@
 		});
 	};
 
-	StackInteraction.prototype._setStackStyle = function () {
-		var item1 = this._firstItem(), item2 = this._secondItem(), item3 = this._thirdItem(), item4 = this._fourthItem();
+	ElastiStack.prototype._setStackStyle = function () {
+		var item1 = this._firstItem(), item2 = this._secondItem(), item3 = this._thirdItem();
 
 		if (item1) {
 			item1.style.opacity = 1;
-			item1.style.zIndex = 5;
-			setTransformStyle(item1, is3d ? 'rotate(0deg)' : '');
+			item1.style.zIndex = 4;
+			//setTransformStyle(item1, is3d ? 'translate3d(0,0,0)' : 'translate(0,0)');
 		}
 
 		if (item2) {
 			item2.style.opacity = 1;
-			item2.style.zIndex = 4;
-			setTransformStyle(item2, is3d ? 'rotate(-2deg)' : '');
+			item2.style.zIndex = 3;
+			//setTransformStyle(item2, is3d ? 'translate3d(0,0,-60px)' : 'translate(0,0)');
 		}
 
 		if (item3) {
 			item3.style.opacity = 1;
-			item3.style.zIndex = 3;
-			setTransformStyle(item3, is3d ? 'rotate(-8deg)' : '');
-		}
-
-		if (item4) {
-			item4.style.opacity = 1;
-			item4.style.zIndex = 2;
-			setTransformStyle(item4, is3d ? 'rotate(8deg)' : '');
+			item3.style.zIndex = 2;
+			//setTransformStyle(item3, is3d ? 'translate3d(0,0,-120px)' : 'translate(0,0)');
 		}
 	};
 
-	StackInteraction.prototype._moveAway = function (instance) {
+	ElastiStack.prototype._moveAway = function (instance) {
 		// disable drag
 		this._disableDragg();
 
@@ -495,28 +488,23 @@
 		var tVal = this._getTranslateVal(instance);
 
 		// apply it
-		setTransformStyle(instance.element, is3d ? 'translate3d(' + tVal.x + 'px,' + tVal.y + 'px, 0px)' : 'translate(' + tVal.x + 'px,' + tVal.y + 'px)');
+		//setTransformStyle(instance.element, is3d ? 'translate3d(' + tVal.x + 'px,' + tVal.y + 'px, 0px)' : 'translate(' + tVal.x + 'px,' + tVal.y + 'px)');
 
 		// item also fades out
 		instance.element.style.opacity = 0;
 
 		// other items move back to stack
-		var item2 = this._secondItem(), item3 = this._thirdItem(), item4 = this._fourthItem();
+		var item2 = this._secondItem(), item3 = this._thirdItem();
 
 		if (item2) {
 			classie.add(item2, 'move-back');
 			classie.add(item2, 'animate');
-			setTransformStyle(item2, is3d ? 'rotate(-2deg)' : '');
+			//setTransformStyle(item2, is3d ? 'translate3d(0,0,-60px)' : 'translate(0,0)');
 		}
 		if (item3) {
 			classie.add(item3, 'move-back');
 			classie.add(item3, 'animate');
-			setTransformStyle(item3, is3d ? 'rotate(-8deg)' : '');
-		}
-		if (item4) {
-			classie.add(item4, 'move-back');
-			classie.add(item4, 'animate');
-			setTransformStyle(item4, is3d ? 'rotate(8deg)' : '');
+			//setTransformStyle(item3, is3d ? 'translate3d(0,0,-120px)' : 'translate(0,0)');
 		}
 
 		// after transition ends..
@@ -535,14 +523,12 @@
 				// new front items
 				var item1 = self._firstItem(),
 					item2 = self._secondItem(),
-					item3 = self._thirdItem(),
-					item4 = self._fourthItem();
+					item3 = self._thirdItem();
 
 				// reset transition timing function
 				classie.remove(item1, 'move-back');
 				if (item2) classie.remove(item2, 'move-back');
 				if (item3) classie.remove(item3, 'move-back');
-				if (item4) classie.remove(item4, 'move-back');
 
 				setTimeout(function () {
 					// the upcoming one will animate..
@@ -569,8 +555,8 @@
 		}
 	};
 
-	StackInteraction.prototype._moveBack = function (instance) {
-		var item2 = this._secondItem(), item3 = this._thirdItem(), item4 = this._fourthItem();
+	ElastiStack.prototype._moveBack = function (instance) {
+		var item2 = this._secondItem(), item3 = this._thirdItem();
 
 		classie.add(instance.element, 'move-back');
 		classie.add(instance.element, 'animate');
@@ -581,23 +567,18 @@
 		if (item2) {
 			classie.add(item2, 'move-back');
 			classie.add(item2, 'animate');
-			setTransformStyle(item2, is3d ? 'rotate(-8deg)' : '');
+			//setTransformStyle(item2, is3d ? 'translate3d(0,0,-60px)' : 'translate(0,0)');
 		}
 		if (item3) {
 			classie.add(item3, 'move-back');
 			classie.add(item3, 'animate');
-			setTransformStyle(item3, is3d ? 'rotate(-2deg)' : '');
-		}
-		if (item4) {
-			classie.add(item4, 'move-back');
-			classie.add(item4, 'animate');
-			setTransformStyle(item4, is3d ? 'rotate(8deg)' : '');
+			//setTransformStyle(item3, is3d ? 'translate3d(0,0,-120px)' : 'translate(0,0)');
 		}
 	};
 
-	StackInteraction.prototype._onDragStart = function (instance, event, pointer) {
+	ElastiStack.prototype._onDragStart = function (instance, event, pointer) {
 		// remove transition classes if any
-		var item2 = this._secondItem(), item3 = this._thirdItem(), item4 = this._fourthItem();
+		var item2 = this._secondItem(), item3 = this._thirdItem();
 
 		classie.remove(instance.element, 'move-back');
 		classie.remove(instance.element, 'animate');
@@ -610,33 +591,25 @@
 			classie.remove(item3, 'move-back');
 			classie.remove(item3, 'animate');
 		}
-		if (item4) {
-			classie.remove(item4, 'move-back');
-			classie.remove(item4, 'animate');
-		}
 	};
 
-	StackInteraction.prototype._onDragMove = function (instance, event, pointer) {
+	ElastiStack.prototype._onDragMove = function (instance, event, pointer) {
 		if (this._outOfBounds(instance)) {
 			this._moveAway(instance);
 		}
 		else {
 			// the second and third items also move
-			var item2 = this._secondItem(), item3 = this._thirdItem(), item4 = this._fourthItem();
+			var item2 = this._secondItem(), item3 = this._thirdItem();
 			if (item2) {
 				//setTransformStyle(item2, is3d ? 'translate3d(' + ( instance.position.x * .6 ) + 'px,' + ( instance.position.y * .6 ) + 'px, -60px)' : 'translate(' + ( instance.position.x * .6 ) + 'px,' + ( instance.position.y * .6 ) + 'px)');
 			}
 			if (item3) {
 				//setTransformStyle(item3, is3d ? 'translate3d(' + ( instance.position.x * .3 ) + 'px,' + ( instance.position.y * .3 ) + 'px, -120px)' : 'translate(' + ( instance.position.x * .3 ) + 'px,' + ( instance.position.y * .3 ) + 'px)');
 			}
-			if (item4) {
-				//setTransformStyle(item4, is3d ? 'translate3d(' + ( instance.position.x * .3 ) + 'px,' + ( instance.position.y * .3 ) + 'px, -120px)' : 'translate(' + ( instance.position.x * .3 ) + 'px,' + ( instance.position.y * .3 ) + 'px)');
-
-			}
 		}
 	};
 
-	StackInteraction.prototype._onDragEnd = function (instance, event, pointer) {
+	ElastiStack.prototype._onDragEnd = function (instance, event, pointer) {
 		if (this._outOfBounds(instance)) return;
 		if (this._outOfSight(instance)) {
 			this._moveAway(instance);
@@ -646,25 +619,25 @@
 		}
 	};
 
-	StackInteraction.prototype._initDragg = function () {
+	ElastiStack.prototype._initDragg = function () {
 		this.draggie = new Draggabilly(this.items[this.current]);
 	};
 
-	StackInteraction.prototype._disableDragg = function () {
+	ElastiStack.prototype._disableDragg = function () {
 		this.draggie.disable();
 	};
 
 	// returns true if x or y is bigger than distDragMax
-	StackInteraction.prototype._outOfBounds = function (el) {
+	ElastiStack.prototype._outOfBounds = function (el) {
 		return Math.abs(el.position.x) > this.options.distDragMax || Math.abs(el.position.y) > this.options.distDragMax;
 	};
 
 	// returns true if x or y is bigger than distDragBack
-	StackInteraction.prototype._outOfSight = function (el) {
+	ElastiStack.prototype._outOfSight = function (el) {
 		return Math.abs(el.position.x) > this.options.distDragBack || Math.abs(el.position.y) > this.options.distDragBack;
 	};
 
-	StackInteraction.prototype._getTranslateVal = function (el) {
+	ElastiStack.prototype._getTranslateVal = function (el) {
 		var h = Math.sqrt(Math.pow(el.position.x, 2) + Math.pow(el.position.y, 2)),
 			a = Math.asin(Math.abs(el.position.y) / h) / ( Math.PI / 180 ),
 			hL = h + this.options.distDragBack,
@@ -680,44 +653,35 @@
 	};
 
 	// returns the first item in the stack
-	StackInteraction.prototype._firstItem = function () {
+	ElastiStack.prototype._firstItem = function () {
 		return this.items[this.current];
 	};
 
 	// returns the second item in the stack
-	StackInteraction.prototype._secondItem = function () {
+	ElastiStack.prototype._secondItem = function () {
 		if (this.itemsCount >= 2) {
 			return this.current + 1 < this.itemsCount ? this.items[this.current + 1] : this.items[Math.abs(this.itemsCount - ( this.current + 1 ))];
 		}
 	};
 
 	// returns the third item in the stack
-	StackInteraction.prototype._thirdItem = function () {
+	ElastiStack.prototype._thirdItem = function () {
 		if (this.itemsCount >= 3) {
 			return this.current + 2 < this.itemsCount ? this.items[this.current + 2] : this.items[Math.abs(this.itemsCount - ( this.current + 2 ))];
 		}
 	};
 
-	// returns the third item in the stack
-	StackInteraction.prototype._fourthItem = function () {
-		if (this.itemsCount >= 4) {
-			return this.current + 3 < this.itemsCount ? this.items[this.current + 3] : this.items[Math.abs(this.itemsCount - ( this.current + 3 ))];
-		}
-	};
-
-
 	// returns the last item (of the first three) in the stack
-	StackInteraction.prototype._lastItem = function () {
-		if (this.itemsCount >= 4) {
-			return this._fourthItem();
-		} else if (this.itemsCount >= 3) {
+	ElastiStack.prototype._lastItem = function () {
+		if (this.itemsCount >= 3) {
 			return this._thirdItem();
-		} else {
+		}
+		else {
 			return this._secondItem();
 		}
 	};
 
 	// add to global namespace
-	window.StackInteraction = StackInteraction;
+	window.ElastiStack = ElastiStack;
 
 })(window);
