@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="css/style.css" rel="stylesheet">
+    <title>Filter</title>
+    <script type="text/javascript" src="js/blur.js"></script>
+</head>
+<body>
+<h1>HTML Canvas Image Process - By Gloomy Fish</h1>
+<div id="svgContainer">
+    <div id="sourceDiv">
+        <img id="source" width="auto" height="auto" src="avatar.jpg" />
+    </div>
+    <div id="targetDiv">
+        <canvas id="target" ></canvas>
+    </div>
+</div>
+<div id="btn-group">
+    <button type="button" id="invert-button">反色</button>
+    <button type="button" id="adjust-button">灰色调</button>
+    <button type="button" id="blur-button">模糊</button>
+    <button type="button" id="relief-button">浮雕</button>
+    <button type="button" id="diaoke-button">雕刻</button>
+    <button type="button" id="mirror-button">镜像</button>
+</div>
+<!--<script type="text/javascript" src="js/filter.js"></script>-->
+</body>
+
+<script type="text/javascript">
+    stackBlurImage( 'source', 'target', 60, false );
+</script>
+</html>

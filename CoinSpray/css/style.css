@@ -1,0 +1,43 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    margin:0px;
+    padding: 0px;
+    overflow: hidden;
+    perspective: 500px;
+}
+#popCoin{
+    width:400px;
+    height:600px;
+    position: absolute;
+    left: 50%;
+    margin-left:-200px;
+    top:50%;
+    margin-top:-300px;
+    background: red;
+    /*opacity: 0;*/
+    /*transition: all 3s;*/
+    /*transform: translateZ(200px);*/
+    animation: popup 3s ease;
+    -webkit-animation: popup 3s ease;
+    -webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
+    animation-fill-mode: forwards;
+}
+
+
+
+
+@-webkit-keyframes popup{
+    0%{
+        opacity: 0;
+        transform: translateZ(-500px);
+    }
+    50%{
+        opacity: 1;
+        transform: translateZ(200px);
+    }
+    100% {
+        opcacity:1;
+        transform: translateZ(0px);
+    }
+}
