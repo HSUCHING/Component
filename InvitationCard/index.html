@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="wrapper">
+    <div class="envelope">
+        <div class="flap front"></div>
+        <div class="flap top"></div>
+        <div class="letter"></div>
+    </div>
+</div>
+
+
+<button id="open">open</button>
+    <button id="send">send</button>
+
+</body>
+<script type="text/javascript">
+    document.getElementById("open").onclick=function(){
+        document.getElementsByClassName("envelope")[0].classList.add("open");
+    }
+
+    document.getElementById("send").onclick=function(){
+        document.getElementsByClassName("envelope")[0].classList.add("close");
+//        document.getElementsByClassName("envelope")[0].classList.remove("open");
+
+    }
+</script>
+</html>
