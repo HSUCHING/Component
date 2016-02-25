@@ -15,19 +15,26 @@
 </div>
 
 
-<button id="open">open</button>
-    <button id="send">send</button>
-
+<button id="receive" class="btStyle">receive</button>
+<button id="open" class="btStyle">open</button>
+<button id="close" class="btStyle">close</button>
+<button id="send" class="btStyle">send</button>
 </body>
 <script type="text/javascript">
-    document.getElementById("open").onclick=function(){
+    document.getElementById("receive").onclick = function () {
+        document.getElementById("wrapper").classList.add("receive");
+    }
+    document.getElementById("open").onclick = function () {
         document.getElementsByClassName("envelope")[0].classList.add("open");
     }
 
-    document.getElementById("send").onclick=function(){
+    document.getElementById("close").onclick = function () {
         document.getElementsByClassName("envelope")[0].classList.add("close");
 //        document.getElementsByClassName("envelope")[0].classList.remove("open");
 
+    }
+    document.getElementById("send").onclick = function () {
+        document.getElementById("wrapper").classList.add("send");
     }
 </script>
 </html>
