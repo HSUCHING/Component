@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Intro</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+</body>
+<script type="text/javascript" src="js/intro.js"></script>
+<script type="text/javascript">
+    function startIntro(){
+        var intro = intro();
+        intro.setOptions({
+            steps: [
+                {
+                    element: '#step1',
+                    intro: "This is a <b>bold</b> tooltip."
+                },
+                {
+                    element: '#step2',
+                    intro: "Ok, <i>wasn't</i> that fun?",
+                    position: 'right'
+                },
+                {
+                    element: '#step3',
+                    intro: 'More features, more <span style="color: red;">f</span><span style="color: green;">u</span><span style="color: blue;">n</span>.',
+                    position: 'left'
+                },
+                {
+                    element: '#step4',
+                    intro: "<span style='font-family: Tahoma'>Another step with new font!</span>",
+                    position: 'bottom'
+                },
+                {
+                    element: '#step5',
+                    intro: '<strong>Get</strong> it, <strong>use</strong> it.'
+                }
+            ]
+        });
+
+        intro.start();
+    }
+
+</script>
+</html>
