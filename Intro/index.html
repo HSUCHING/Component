@@ -11,7 +11,7 @@
 <div class="container-narrow">
 
     <div class="masthead">
-        <ul id="step5" class="nav nav-pills pull-right">
+        <ul id="" class="nav nav-pills pull-right">
             <li><a href="https://github.com/usablica/intro.js/tags"><i class='icon-black icon-download-alt'></i>
                 Download</a></li>
             <li><a href="https://github.com/usablica/intro.js">Github</a></li>
@@ -76,15 +76,25 @@
     function startIntro() {
         var introPage = intro();
         introPage.setOptions({
+            showSkip:false,
             steps: [
                 {
                     element: '#step1',
-                    intro: "This is a <b>bold</b> tooltip."
+                    intro: "This is a <b>bold</b> tooltip.",
+                    subdomCondition:[{
+                        dom:"a1",
+                        condition:"empty"
+
+                    },{
+                        dom:"a2",
+                        condition:"empty"
+                    }]
                 },
                 {
                     element: '#step2',
                     intro: "Ok, <i>wasn't</i> that fun?",
-                    position: 'right'
+                    position: 'right',
+                    condition:'mobile'
                 },
                 {
                     element: '#step3',
@@ -103,7 +113,9 @@
             ]
         });
 
-        introPage.start();
+        introPage.start().oncomplete(function() {
+            window.location.href = '';
+        });
     }
 
 </script>
