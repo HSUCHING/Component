@@ -11,7 +11,7 @@
 <div class="container-narrow">
 
     <div class="masthead">
-        <ul id="" class="nav nav-pills pull-right">
+        <ul id="step5" class="nav nav-pills pull-right">
             <li><a href="https://github.com/usablica/intro.js/tags"><i class='icon-black icon-download-alt'></i>
                 Download</a></li>
             <li><a href="https://github.com/usablica/intro.js">Github</a></li>
@@ -24,6 +24,7 @@
 
     <div class="jumbotron">
         <h1 id="step1">HTML in tooltip</h1>
+
         <p id="step4" class="lead">We're going to use HTML codes in tooltips via Programmatic API</p>
         <a class="btn btn-large btn-success" href="javascript:void(0);" onclick="startIntro();">Show me how</a>
     </div>
@@ -76,25 +77,25 @@
     function startIntro() {
         var introPage = intro();
         introPage.setOptions({
-            showSkip:false,
+            showSkip: false,
             steps: [
                 {
                     element: '#step1',
                     intro: "This is a <b>bold</b> tooltip.",
-                    subdomCondition:[{
-                        dom:"a1",
-                        condition:"empty"
+                    subdomCondition: [{
+                        dom: "a1",
+                        condition: "empty"
 
-                    },{
-                        dom:"a2",
-                        condition:"empty"
+                    }, {
+                        dom: "a2",
+                        condition: "empty"
                     }]
                 },
                 {
                     element: '#step2',
                     intro: "Ok, <i>wasn't</i> that fun?",
                     position: 'right',
-                    condition:'mobile'
+                    condition: 'mobile'
                 },
                 {
                     element: '#step3',
@@ -113,7 +114,7 @@
             ]
         });
 
-        introPage.start().oncomplete(function() {
+        introPage.start().oncomplete(function () {
             window.location.href = '';
         });
     }
