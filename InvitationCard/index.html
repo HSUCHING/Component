@@ -13,12 +13,24 @@
         <div class="letter"></div>
     </div>
 </div>
-
+<div id="sendsuccess">
+    <div id="sendsvg">
+        <svg id="load" class="showwrapped" x="0px" y="0px" viewBox="0 0 150 150">
+            <circle class="loading-inner" cx="75" cy="75" r="60"/>
+            <path id="tick-path" d="M35 80 l30 30 50 -70"/>
+        </svg>
+    </div>
+    <div id="welcome">
+        欢迎您大驾光临!
+    </div>
+</div>
 
 <button id="receive" class="btStyle">receive</button>
 <button id="open" class="btStyle">open</button>
 <button id="close" class="btStyle">close</button>
 <button id="send" class="btStyle">send</button>
+
+
 </body>
 <script type="text/javascript">
     document.getElementById("receive").onclick = function () {
@@ -35,6 +47,13 @@
     }
     document.getElementById("send").onclick = function () {
         document.getElementById("wrapper").classList.add("send");
+        setTimeout(send, 1000);
+        function send() {
+            document.querySelector("#sendsvg").classList.add("show");
+            document.querySelector("#welcome").classList.add("show");
+        }
     }
+
+
 </script>
 </html>
