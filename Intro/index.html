@@ -75,8 +75,7 @@
 <script type="text/javascript" src="js/intro.js"></script>
 <script type="text/javascript">
     function startIntro() {
-        var introPage = intro();
-        introPage.setOptions({
+        var introPage = intro().setOptions({
             showSkip: false,
             steps: [
                 {
@@ -112,9 +111,7 @@
                     intro: '<strong>Get</strong> it, <strong>use</strong> it.'
                 }
             ]
-        });
-
-        introPage.start().oncomplete(function () {
+        }).start().oncomplete(function () {
             window.location.href = '';
         });
     }

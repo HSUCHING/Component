@@ -404,6 +404,10 @@
 
 	function StackInteraction(el, options) {
 		this.container = el;
+		this.ordination = {
+			x: 0,
+			y: 0
+		}
 		this.options = extend({}, this.options);
 		extend(this.options, options);
 		this._init();
@@ -447,12 +451,18 @@
 		var self = this;
 		this.draggie.on('dragStart', function (i, e, p) {
 			self._onDragStart(i, e, p);
+			self.ordination.x = i.position.x;
+			self.ordination.y = i.position.y;
+			console.log(self.ordination);
 		});
 		this.draggie.on('dragMove', function (i, e, p) {
 			self._onDragMove(i, e, p);
 		});
 		this.draggie.on('dragEnd', function (i, e, p) {
 			self._onDragEnd(i, e, p);
+			if (Math.abs(i.position.x - self.ordination.x) < 10 && Math.abs(i.position.y - self.ordination.y) < 10) {
+				window.location.href = e.srcElement.getAttribute("data-url");
+			}
 		});
 	};
 
