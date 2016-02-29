@@ -2,6 +2,12 @@
     box-sizing: border-box;
 }
 
+/*#wparent{*/
+    /*position: relative;*/
+    /*width:802px;*/
+    /*height: 802px;*/
+/*}*/
+
 #wrapper {
     width: 800px;
     height: 400px;
@@ -13,7 +19,6 @@
     padding: 0px;
     transform: scale(0) rotateX(0deg);
     transition: all 3s;
-    overflow: hidden;
 }
 
 #sendsuccess {
@@ -284,6 +289,7 @@
     transform: rotateX(-5deg);
     bottom: 0;
 }
+
 
 .envelope .letter:before {
     z-index: 1;
