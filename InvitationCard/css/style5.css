@@ -1,0 +1,400 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#wrapper {
+    width: 81.4%;
+    height: 29.6%;
+    position: absolute;
+    left: 50%;
+    margin-left: -40.7%;
+    top: 50%;
+    margin-top: -34.8%;
+    padding: 0px;
+    /*transform: scale(0) rotateX(0deg);*/
+    transition: all 3s;
+}
+
+#wrapper.receive {
+    opacity: 1;
+    transition: all 3s;
+    transform: scale(1) rotateX(360deg);
+}
+
+.envelope {
+    width: 100%;
+    height: 100%;
+    /*background: rgba(214, 78, 78, 1);*/
+    background-image: -webkit-linear-gradient(to top, rgba(155, 59, 59, 1), rgba(214, 78, 78, 1));
+    background-image: linear-gradient(to top, rgba(155, 59, 59, 1), rgba(214, 78, 78, 1));
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5),
+    0 10px 36px rgba(0, 0, 0, 0.25);
+    position: relative;
+    perspective: 800px;
+}
+
+.envelope .flap.front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    text-align: center;
+    padding-top: 30%;
+    line-height: 20px;
+    color: rgba(255, 175, 0, 1);
+    background-image: -webkit-linear-gradient(to top, rgba(155, 59, 59, 1), rgba(214, 78, 78, 1));
+    background-image: linear-gradient(to top, rgba(155, 59, 59, 1), rgba(214, 78, 78, 1));
+    font-size: 3em;
+}
+
+.envelope .flap.top {
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    top: 0;
+    left: 0;
+    border-radius: 50% / 100%;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: rgba(231, 90, 90, 1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 3;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    -webkit-transform-origin-y: top;
+    transform-origin-y: top;
+    perspective: 800px;
+    transform-style: preserve-3d;
+    transition: all 2s;
+    -webkit-transition: all 2s;
+}
+
+.envelope.open .flap.top {
+    /*transition: all 2s;*/
+    /*-webkit-transition: all 2s;*/
+    z-index: 2;
+    transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
+}
+
+.envelope.close .flap.top {
+    animation-delay: 3s;
+    -webkit-animation-delay: 3s;
+    animation-name: flipclose;
+    -webkit-animation-name: flipclose;
+}
+
+@keyframes flipclose {
+    100% {
+        transform: rotateX(0deg);
+        z-index: 3;
+    }
+}
+
+@-webkit-keyframes flipclose {
+    100% {
+        transform: rotateX(0deg);
+        z-index: 3;
+    }
+}
+
+.envelope .letter {
+    position: absolute;
+    padding-top: 5px;
+    width: 90%;
+    height: 90%;
+    /*background: rgba(255, 255, 255, 1);*/
+    background: linear-gradient(rgba(255, 255, 255, 1) 90%, rgba(238, 238, 238, 1) 10%);
+    background-size: 100% 1.3em;
+    top: 5%;
+    left: 5%;
+    border: 2px solid #ccc;
+    border-left: 20px solid rgba(255, 255, 255, 1);
+    border-right: 20px solid rgba(255, 255, 255, 1);
+    z-index: 2;
+    animation-duration: 2s;
+    animation-delay: 1.5s;
+    animation-fill-mode: forwards;
+    transform-style: preserve-3d;
+    font-size: 3.0em;
+    overflow: hidden;
+    line-height: 1.25em;
+}
+.envelope .letter.back{
+    -webkit-transform-origin-y: top;
+    transform-origin-y: top;
+    top:95%;
+    backface-visibility:hidden;
+    transform:rotateX(-180deg);
+    -webkit-transform:rotateX(-180deg);
+}
+
+
+
+.envelope.open .letter {
+    transition-property: all;
+    -webkit-transition-property: all;
+    transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    transition-delay: 2s;
+    -webkit-transition-delay: 2s;
+    z-index: 2;
+    animation-duration: 4s;
+    animation-delay: 2s;
+    animation-name: openfromE;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-name: openfromE;
+}
+
+
+.envelope.open .letter.back{
+    transition-property: all;
+    -webkit-transition-property: all;
+    transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    transition-delay: 2s;
+    -webkit-transition-delay: 2s;
+    animation-duration: 4s;
+    animation-delay: 2s;
+    animation-name: backrotate;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-delay: 2s;
+    -webkit-animation-name: backrotate;
+    z-index: 3;
+}
+
+.envelope.close .letter {
+    z-index: 3;
+    /*top: -100%;*/
+    animation-duration: 2s;
+    animation-name: putIntoClose;
+    animation-delay: 0s;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: putIntoClose;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-delay: 0s;
+    -webkit-animation-fill-mode: forwards;
+}
+
+@keyframes openfromE {
+    50% {
+        top: -100%;
+    }
+    80% {
+        top: 5%;
+        z-index: 3;
+    }
+    100% {
+        top: 5%;
+        z-index: 3;
+    }
+    /*50% {*/
+    /*top: -100%;*/
+    /*}*/
+    /*100% {*/
+    /*top:-100%;*/
+    /*height: 200%;*/
+    /*z-index: 3;*/
+    /*}*/
+}
+
+@keyframes backrotate {
+    50% {
+        top: -5%;
+    }
+    80% {
+        top: 95%;
+        z-index: 3;
+    }
+    100%{
+        top: 95%;
+        transform: rotateX(0deg);
+    }
+    /*50% {*/
+    /*top: -100%;*/
+    /*}*/
+    /*100% {*/
+    /*top:-100%;*/
+    /*height: 200%;*/
+    /*z-index: 3;*/
+    /*}*/
+}
+
+@-webkit-keyframes openfromE {
+    50% {
+        top: -100%;
+    }
+    80% {
+        top: 5%;
+        z-index: 3;
+    }
+    /*50% {*/
+    /*top: -100%;*/
+    /*}*/
+    /*100% {*/
+    /*top:-100%;*/
+    /*height: 200%;*/
+    /*z-index: 3;*/
+    /*}*/
+}
+
+@keyframes putIntoClose {
+    50% {
+        top: -100%;
+        z-index: 3;
+        height: 90%;
+    }
+    80% {
+        top: 5%;
+        z-index: 1;
+    }
+}
+
+@-webkit-keyframes putIntoClose {
+    50% {
+        top: -100%;
+        z-index: 3;
+        height: 90%;
+    }
+    80% {
+        top: 5%;
+        z-index: 1;
+    }
+}
+
+.btStyle {
+    background: #eee;
+    display: inline-block;
+    /*margin-top: -100px;*/
+    text-align: center;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-radius: 25px;
+    background: linear-gradient(#eee, #ccc);
+    color: #333;
+    text-shadow: 0 1px 0 #fff;
+    cursor: pointer;
+    /*position: fixed;*/
+    /*bottom: 0px;*/
+    left: 100px;
+    float: left;
+}
+
+.btStyle:hover {
+    opacity: 0.8;
+}
+
+.btStyle:active {
+    background: linear-gradient(#ccc, #eee);
+}
+
+#wrapper.send {
+    animation: send 2s forwards;
+}
+
+@keyframes send {
+    0% {
+        opacity: 1;
+        transform: rotateX(0deg) rotateZ(0deg) translateX(-50%) translateY(0) scale(1);
+    }
+    33% {
+        opacity: 0.66;
+        transform: rotateX(0deg) rotateZ(-5deg) translateX(-100%) translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: rotateX(0deg) rotateZ(0deg) translateX(1000%) translateY(0) scale(1);
+    }
+}
+
+#sendsuccess {
+    width: 800px;
+    height: 400px;
+    background-color: transparent;
+    position: absolute;
+    left: 50%;
+    margin-left: -400px;
+    top: 50%;
+    margin-top: -300px;
+    padding: 0px;
+    z-index: 1000;
+    /*transform: scale(0) rotateX(0deg);*/
+    /*transform: scale(1) rotateX(360deg);*/
+    transition: all 3s;
+}
+
+#sendsuccess > div {
+    margin: 50px auto;
+    width: 300px;
+    height: 300px;
+    background-color: transparent;
+}
+
+#welcome {
+    opacity: 0;
+    text-align: center;
+}
+
+#welcome.show {
+    transition: all 2s;
+    transition-delay: 3s;
+    transform: translateY(-300px);
+    opacity: 1;
+}
+
+.loading-inner {
+    fill: transparent;
+    stroke-dashoffset: 0;
+    stroke-dashoffset: 300;
+    stroke-width: 6;
+    stroke-miterlimit: 10;
+    stroke-linecap: round;
+    stroke: #51BBA7;
+    transform: scale(0);
+    transition: all 1.5s;
+}
+
+#sendsvg.show {
+    transition: all 1s;
+    transition-delay: 3s;
+    opacity: 0;
+}
+
+#sendsvg.show .loading-inner {
+    transform: scale(1);
+}
+
+#tick-path {
+    stroke: #51BBA7;
+    fill: transparent;
+    stroke-width: 5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 150;
+    stroke-dashoffset: 160;
+}
+
+#sendsvg.show #tick-path {
+    animation: tick 0.6s ease-in;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes tick {
+    from {
+        stroke-dashoffset: 160;
+        stroke-dasharray: 150;
+    }
+    to {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 150;
+    }
+}

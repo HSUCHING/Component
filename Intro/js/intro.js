@@ -293,7 +293,7 @@ function _nextStep() {
 	}
 
 	var self = this;
-	if (nextStep.element.tagName == "BUTTON") {
+	if (this._introItems[this._currentStep].jNext || nextStep.element.tagName == "BUTTON") {
 		_one.bind(nextStep.element)("click", _nextStep.bind(self));
 		//nextStep.element.onclick = function(){
 		//	_nextStep.call(self);

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <title></title>
+    <link rel="stylesheet" href="css/style4.css">
+</head>
+<body>
+<div id="wrapper">
+    <div class="envelope">
+        <div class="flap front">邀请函</div>
+        <div class="flap top"></div>
+        <div class="letter">
+            <div>我们将在南昌喜来登酒店举行“合规共赢未来-医时系统研讨会”</div>
+            <div>时间:2016年3月8日下午4点整</div>
+            <div>地点:中国江西省南昌市红谷滩新区红谷中大道1669号南昌喜来登酒店</div>
+            <div> Tel：+86 791 8222 2228</div>
+            <div>
+                欢迎您的莅临<br/>
+                若您能参加,请填写以下回执内容:<br/>
+                姓名:<input id="name"/><br/>
+                手机号码:<input id="tel"/><br/>
+            </div>
+            <button id="enter">确认参加</button>
+        </div>
+        <button id="unpack">
+            打开
+        </button>
+    </div>
+
+</div>
+
+
+<div id="sendsuccess">
+    <div id="sendsvg">
+        <svg id="load" class="showwrapped" x="0px" y="0px" viewBox="0 0 150 150">
+            <circle class="loading-inner" cx="75" cy="75" r="60"/>
+            <path id="tick-path" d="M35 80 l30 30 50 -70"/>
+        </svg>
+    </div>
+</div>
+<div id="welcome">
+    <div id="welName">Hsuching</div>
+
+    <div id="title">医时欢迎您!</div>
+</div>
+
+
+</body>
+<script type="text/javascript">
+
+    window.onload = function () {
+        document.getElementById("wrapper").classList.add("receive");
+
+    }
+    document.getElementById("unpack").onclick = function () {
+        document.getElementById("unpack").classList.add("open");
+        document.getElementsByClassName("envelope")[0].classList.add("open");
+    }
+
+
+    var user={
+        name:"",
+        tel:""
+    };
+    document.getElementById("enter").onclick = function () {
+
+        user.name=document.getElementById("name").value;
+        user.tel=document.getElementById("tel").value;
+
+        document.getElementById("welName").innerHTML=user.name;
+
+        document.getElementsByClassName("envelope")[0].classList.add("close");
+        setTimeout(send, 3000);
+        function send(){
+            document.getElementById("wrapper").classList.add("send");
+        }
+
+        setTimeout(show, 5000);
+        function show() {
+            document.querySelector("#sendsvg").classList.add("show");
+            document.querySelector("#welcome").classList.add("show");
+        }
+    }
+
+
+
+</script>
+</html>
