@@ -104,9 +104,7 @@ function _introForElement(targetElm) {
 			//use querySelector function only when developer used CSS selector
 			if (typeof(currentItem.element) === 'string') {
 				//grab the element with given selector from the page
-				if (currentItem.element != "out_of_side") {
-					currentItem.element = document.querySelector(currentItem.element);
-				}
+				currentItem.element = document.querySelector(currentItem.element);
 			}
 
 			if (currentItem.element != null) {
@@ -242,13 +240,8 @@ function _setHelperLayerPosition(helperLayer) {
 			elementPosition = _getOffset(currentElement.element),
 			widthHeightPadding = 10;
 
-		//if (this._introItems[this._currentStep - 1] && this._introItems[this._currentStep - 1].element == "out_of_side") {
-		//	helperLayer.classList.remove("intro-fixedTooltip");
-		//}
-
 		// if the target element is fixed, the tooltip should be fixed as well.
-
-		if (currentElement.element != "out_of_side" && _isFixed(currentElement.element)) {
+		if (_isFixed(currentElement.element)) {
 			helperLayer.className += ' intro-fixedTooltip';
 		}
 
@@ -256,20 +249,11 @@ function _setHelperLayerPosition(helperLayer) {
 			widthHeightPadding = 0;
 		}
 
-		if (currentElement.position == "right_top") {
-			helperLayer.setAttribute('style', 'width: ' + (0 + widthHeightPadding) + 'px; ' +
-				'height:' + (0 + widthHeightPadding) + 'px; ' +
-				'top:' + 10 + 'px;' +
-				'right: ' + 220 + 'px;');
-		} else {
-
-
-			//set new position to helper layer
-			helperLayer.setAttribute('style', 'width: ' + (elementPosition.width + widthHeightPadding) + 'px; ' +
-				'height:' + (elementPosition.height + widthHeightPadding) + 'px; ' +
-				'top:' + (elementPosition.top - 5) + 'px;' +
-				'left: ' + (elementPosition.left - 5) + 'px;');
-		}
+		//set new position to helper layer
+		helperLayer.setAttribute('style', 'width: ' + (elementPosition.width + widthHeightPadding) + 'px; ' +
+			'height:' + (elementPosition.height + widthHeightPadding) + 'px; ' +
+			'top:' + (elementPosition.top - 5) + 'px;' +
+			'left: ' + (elementPosition.left - 5) + 'px;');
 
 	}
 }
@@ -378,10 +362,9 @@ function _showElement(targetElement) {
 		}
 
 		//remove old classes
-		if (this._introItems[this._currentStep - 1] && this._introItems[this._currentStep - 1].element != "out_of_side") {
-			var oldShowElement = document.querySelector('.intro-showElement');
-			oldShowElement.className = oldShowElement.className.replace(/intro-[a-zA-Z]+/g, '').replace(/^\s+|\s+$/g, '');
-		}
+		var oldShowElement = document.querySelector('.intro-showElement');
+		oldShowElement.className = oldShowElement.className.replace(/intro-[a-zA-Z]+/g, '').replace(/^\s+|\s+$/g, '');
+
 		//we should wait until the CSS3 transition is competed (it's 0.3 sec) to prevent incorrect `height` and `width` calculation
 		if (self._lastShowElementTimer) {
 			clearTimeout(self._lastShowElementTimer);
@@ -604,13 +587,11 @@ function _showElement(targetElement) {
 	//add target element position style
 	targetElement.element.className += ' intro-showElement';
 
-	if (targetElement.element != "out_of_side") {
-		var currentElementPosition = _getPropValue(targetElement.element, 'position');
-		if (currentElementPosition !== 'absolute' &&
-			currentElementPosition !== 'relative') {
-			//change to new intro item
-			targetElement.element.className += ' intro-relativePosition';
-		}
+	var currentElementPosition = _getPropValue(targetElement.element, 'position');
+	if (currentElementPosition !== 'absolute' &&
+		currentElementPosition !== 'relative') {
+		//change to new intro item
+		targetElement.element.className += ' intro-relativePosition';
 	}
 
 	var parentElm = targetElement.element.parentNode;
@@ -882,11 +863,6 @@ function _placeTooltip(targetElement, tooltipLayer, arrowLayer, helperNumberLaye
 			var tooltipLayerStyleLeft = 0;
 			_checkRight(targetOffset, tooltipLayerStyleLeft, tooltipOffset, windowSize, tooltipLayer);
 			tooltipLayer.style.top = (targetOffset.height + 20) + 'px';
-			if (targetElement == "out_of_side") {
-				arrowLayer.style.right = "3px";
-			} else {
-				arrowLayer.style.right = "";
-			}
 			break;
 	}
 }

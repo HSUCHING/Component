@@ -12,19 +12,23 @@
         <div class="flap front">邀请函</div>
         <div class="flap top"></div>
         <div class="letter">
-            <div class="title">
-                <span style="display: block">我们将举行</span>
-                <span style="display: block">“合规共赢未来-医时系统研讨会”</span>
-            </div>
-            <div><label>时间:</label><span id="time">2016年3月8日下午4点整</span></div>
-            <div><label>地点:</label><span id="address">南昌市红谷滩新区红谷中大道1669号喜来登酒店7号会议室</span></div>
-            <div style="height: 1.2em"></div>
-            <div>
-                <span style="display: block">若您能参加,请填写以下回执内容:</span>
-                <span style="display: block"><label>姓名:</label><input id="name"/></span>
-                <span style="display: block"><label>手机:</label><input id="tel"/></span>
-            </div>
-            <button id="enter">确认参加</button>
+            <!--<div class="title">-->
+                <!--<span style="display: block">我们将举行</span>-->
+                <!--<span style="display: block">“合规共赢未来-医时系统研讨会”</span>-->
+            <!--</div>-->
+            <!--<div><label>时间:</label><span id="time">2016年3月8日下午4点整</span></div>-->
+            <!--<div><label>地点:</label><span id="address">南昌市红谷滩新区红谷中大道1669号喜来登酒店7号会议室</span></div>-->
+            <!--<div style="height: 1.2em"></div>-->
+            <!--<div>-->
+                <!--<span style="display: block">若您能参加,请填写以下回执内容:</span>-->
+                <!--<span style="display: block"><label>姓名:</label><input id="name"/></span>-->
+                <!--<span style="display: block"><label>手机:</label><input id="tel"/></span>-->
+            <!--</div>-->
+            <div class="name"><input id="name"/></div>
+            <div class="tel"><input id="tel"/></div>
+
+            <button id="enter"></button>
+            <div id="leather"></div>
         </div>
         <button id="unpack">
             点击
@@ -34,20 +38,20 @@
 </div>
 
 <!--<div id="sendsuccess">-->
-    <!--<div id="sendsvg">-->
-        <!--<svg id="load" class="showwrapped" x="0px" y="0px" viewBox="0 0 150 150">-->
-            <!--<circle class="loading-inner" cx="75" cy="75" r="60"/>-->
-            <!--<path id="tick-path" d="M35 80 l30 30 50 -70"/>-->
-        <!--</svg>-->
-    <!--</div>-->
+<!--<div id="sendsvg">-->
+<!--<svg id="load" class="showwrapped" x="0px" y="0px" viewBox="0 0 150 150">-->
+<!--<circle class="loading-inner" cx="75" cy="75" r="60"/>-->
+<!--<path id="tick-path" d="M35 80 l30 30 50 -70"/>-->
+<!--</svg>-->
+<!--</div>-->
 <!--</div>-->
 <div id="welcome">
     <div id="welName"></div>
 
-    <div id="title"><span>医时欢迎您!</span><br/>
-        <span>红谷滩新区红谷中大道1669号</span><br/>
-        <span>喜来登酒店7号会议室</span><br/>
-        <span>2016年3月8日下午4点整</span><br/>
+    <div id="title"><span>医时欢迎您!</span>
+        <span>红谷滩新区红谷中大道1669号</span>
+        <span>喜来登酒店7号会议室</span>
+        <span>2016年3月8日下午4点整</span>
         <span><label style="display:inline-block;width: 60px">会务组:</label><span>13916668311</span></span>
     </div>
 </div>
@@ -66,20 +70,20 @@
     }
 
 
-    var user={
-        name:"",
-        tel:""
+    var user = {
+        name: "",
+        tel: ""
     };
     document.getElementById("enter").onclick = function () {
 
-        user.name=document.getElementById("name").value;
-        user.tel=document.getElementById("tel").value;
+        user.name = document.getElementById("name").value;
+        user.tel = document.getElementById("tel").value;
 
-        document.getElementById("welName").innerHTML=user.name;
+        document.getElementById("welName").innerHTML = user.name;
 
         document.getElementsByClassName("envelope")[0].classList.add("close");
         setTimeout(send, 3000);
-        function send(){
+        function send() {
             document.getElementById("wrapper").classList.add("send");
             document.querySelector("#welcome").classList.add("show");
 
@@ -92,7 +96,6 @@
 //            document.querySelector("#welcome").classList.add("show");
 //        }
     }
-
 
 
 </script>
