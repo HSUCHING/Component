@@ -86,7 +86,10 @@ function Intro(obj) {
 		/* Default hint position */
 		hintPosition: 'top-middle',
 		/* Hint button label */
-		hintButtonLabel: 'Got it'
+		hintButtonLabel: 'Got it',
+
+		showNext: true,
+		showPrevious: true,
 	};
 }
 
@@ -310,7 +313,12 @@ function _nextStep() {
 
 	var self = this;
 	if (this._introItems[this._currentStep].jNext || nextStep.element.tagName == "BUTTON") {
-		_one.bind(nextStep.element)("click", _nextStep.bind(self));
+		if (this._currentStep != this._introItems.length - 1) {
+			_one.bind(nextStep.element)("click", _nextStep.bind(self));
+		} else {
+			_one.bind(nextStep.element)("click", self._introCompleteCallback);
+		}
+
 		//nextStep.element.onclick = function(){
 		//	_nextStep.call(self);
 		//
@@ -355,6 +363,10 @@ function _showElement(targetElement) {
 		//hide the tooltip
 		oldtooltipContainer.style.opacity = 0;
 		oldtooltipContainer.style.display = "none";
+
+		nextTooltipButton.style.display = "";
+
+		targetElement.jNext && (nextTooltipButton.style.display = "none");
 
 		if (oldHelperNumberLayer != null) {
 			var lastIntroItem = this._introItems[(targetElement.step - 2 >= 0 ? targetElement.step - 2 : 0)];
@@ -410,7 +422,9 @@ function _showElement(targetElement) {
 			//reset button focus
 			if (nextTooltipButton.tabIndex === -1) {
 				//tabindex of -1 means we are at the end of the tour - focus on skip / done
-				skipTooltipButton.focus();
+				if (self._options.showSkip) {
+					this.skipTooltipButton.focus();
+				}
 			} else {
 				//still in the tour, focus on next
 				nextTooltipButton.focus();
@@ -506,6 +520,8 @@ function _showElement(targetElement) {
 		//next button
 		var nextTooltipButton = document.createElement('a');
 
+		targetElement.jNext && (nextTooltipButton.style.display = "none");
+
 		nextTooltipButton.onclick = function () {
 			if (self._introItems.length - 1 != self._currentStep) {
 				var correct = (!self._introItems[self._currentStep].condition && !self._introItems[self._currentStep].subdomCondition) || _regJudge(regExp, self._introItems[self._currentStep]).tfHint;
@@ -515,23 +531,29 @@ function _showElement(targetElement) {
 					var introToolText = document.querySelector('.intro-tooltiptext');
 					introToolText.innerHTML = _regJudge(regExp, self._introItems[self._currentStep]).warnings;
 				}
+			} else {
+				self._introCompleteCallback();
 			}
 		};
 
 		nextTooltipButton.href = 'javascript:void(0);';
 		nextTooltipButton.innerHTML = this._options.nextLabel;
 
-		//previous button
-		var prevTooltipButton = document.createElement('a');
 
-		prevTooltipButton.onclick = function () {
-			if (self._currentStep != 0) {
-				_previousStep.call(self);
-			}
-		};
+		if (this._options.showPrevious) {
 
-		prevTooltipButton.href = 'javascript:void(0);';
-		prevTooltipButton.innerHTML = this._options.prevLabel;
+			//previous button
+			var prevTooltipButton = document.createElement('a');
+
+			prevTooltipButton.onclick = function () {
+				if (self._currentStep != 0) {
+					_previousStep.call(self);
+				}
+			};
+
+			prevTooltipButton.href = 'javascript:void(0);';
+			prevTooltipButton.innerHTML = this._options.prevLabel;
+		}
 
 		//skip button
 		var skipTooltipButton;
@@ -558,7 +580,7 @@ function _showElement(targetElement) {
 
 		//in order to prevent displaying next/previous button always
 		if (this._introItems.length > 1) {
-			buttonsLayer.appendChild(prevTooltipButton);
+			this._options.showPrevious && buttonsLayer.appendChild(prevTooltipButton);
 			buttonsLayer.appendChild(nextTooltipButton);
 		}
 
@@ -573,12 +595,12 @@ function _showElement(targetElement) {
 		_disableInteraction.call(self);
 	}
 
-	prevTooltipButton.removeAttribute('tabIndex');
+	this._options.showPrevious && prevTooltipButton.removeAttribute('tabIndex');
 	nextTooltipButton.removeAttribute('tabIndex');
 
 	if (this._currentStep == 0 && this._introItems.length > 1) {
-		prevTooltipButton.className = 'intro-button intro-prevbutton intro-disabled';
-		prevTooltipButton.tabIndex = '-1';
+		this._options.showPrevious && (prevTooltipButton.className = 'intro-button intro-prevbutton intro-disabled');
+		this._options.showPrevious && (prevTooltipButton.tabIndex = '-1');
 		nextTooltipButton.className = 'intro-button intro-nextbutton';
 		if (this._options.showSkip) {
 			skipTooltipButton.innerHTML = this._options.skipLabel;
@@ -587,11 +609,13 @@ function _showElement(targetElement) {
 		if (this._options.showSkip) {
 			skipTooltipButton.innerHTML = this._options.doneLabel;
 		}
-		prevTooltipButton.className = 'intro-button intro-prevbutton';
-		nextTooltipButton.className = 'intro-button intro-nextbutton intro-disabled';
+		this._options.showPrevious && (prevTooltipButton.className = 'intro-button intro-prevbutton');
+		//nextTooltipButton.className = 'intro-button intro-nextbutton intro-disabled';
+		nextTooltipButton.className = 'intro-button intro-nextbutton';
+		nextTooltipButton.innerHTML = "Complete";
 		nextTooltipButton.tabIndex = '-1';
 	} else {
-		prevTooltipButton.className = 'intro-button intro-prevbutton';
+		this._options.showPrevious && (prevTooltipButton.className = 'intro-button intro-prevbutton');
 		nextTooltipButton.className = 'intro-button intro-nextbutton';
 		if (this._options.showSkip) {
 			skipTooltipButton.innerHTML = this._options.skipLabel;
@@ -919,10 +943,10 @@ function _addOverlayLayer(targetElm) {
 		if (self._options.exitOnOverlayClick == true) {
 
 			//check if any callback is defined
-			if (self._introExitCallback != undefined) {
-				self._introExitCallback.call(self);
-			}
-			_exitIntro.call(self, targetElm);
+			//if (self._introExitCallback != undefined) {
+			//	self._introExitCallback.call(self);
+			//}
+			//_exitIntro.call(self, targetElm);
 		}
 	};
 

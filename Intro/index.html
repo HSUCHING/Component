@@ -71,12 +71,17 @@
     <hr>
 
 </div>
+
+<div style="position: absolute; top:100px; left:100px;width:100px;height: 100px;">
+    <div id="hello" style="position: absolute;width:40px;height: 40px;top:10px;left:10px;">hello</div>
+</div>
 </body>
 <script type="text/javascript" src="js/intro.js"></script>
 <script type="text/javascript">
     function startIntro() {
         var introPage = intro().setOptions({
             showSkip: false,
+            showPrevious:false,
             steps: [
                 {
                     element:'out_of_side',
@@ -84,40 +89,47 @@
                     position:"right_top"
                 },
                 {
+                    element:'#hello',
+                    intro:"show time",
+                    position:"right",
+                    jNext:true
+                },
+                {
                     element: '#step1',
                     intro: "This is a <b>bold</b> tooltip.",
-                    subdomCondition: [{
-                        dom: "a1",
-                        condition: "empty"
-
-                    }, {
-                        dom: "a2",
-                        condition: "empty"
-                    }]
+                    jNext:true
+//                    subdomCondition: [{
+//                        dom: "a1",
+//                        condition: "empty"
+//
+//                    }, {
+//                        dom: "a2",
+//                        condition: "empty"
+//                    }]
                 },
-                {
-                    element: '#step2',
-                    intro: "Ok, <i>wasn't</i> that fun?",
-                    position: 'right',
-                    condition: 'mobile'
-                },
-                {
-                    element: '#step3',
-                    intro: 'More features, more <span style="color: red;">f</span><span style="color: green;">u</span><span style="color: blue;">n</span>.',
-                    position: 'left'
-                },
-                {
-                    element: '#step4',
-                    intro: "<span style='font-family: Tahoma'>Another step with new font!</span>",
-                    position: 'bottom'
-                },
-                {
-                    element: '#step5',
-                    intro: '<strong>Get</strong> it, <strong>use</strong> it.'
-                }
+//                {
+//                    element: '#step2',
+//                    intro: "Ok, <i>wasn't</i> that fun?",
+//                    position: 'right',
+//                    condition: 'mobile'
+//                },
+//                {
+//                    element: '#step3',
+//                    intro: 'More features, more <span style="color: red;">f</span><span style="color: green;">u</span><span style="color: blue;">n</span>.',
+//                    position: 'left'
+//                },
+//                {
+//                    element: '#step4',
+//                    intro: "<span style='font-family: Tahoma'>Another step with new font!</span>",
+//                    position: 'bottom'
+//                },
+//                {
+//                    element: '#step5',
+//                    intro: '<strong>Get</strong> it, <strong>use</strong> it.'
+//                }
             ]
         }).start().oncomplete(function () {
-            window.location.href = '';
+            window.location.href = 'http://www.sina.com';
         });
     }
 
