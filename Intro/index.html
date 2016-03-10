@@ -95,17 +95,23 @@
                     jNext:true
                 },
                 {
+                    element: '#step2',
+                    intro: "This is a <b>bold</b> tooltip.",
+                    jNext:true,
+                    condition:"empty"
+                },
+                {
                     element: '#step1',
                     intro: "This is a <b>bold</b> tooltip.",
-//                    jNext:true
-//                    subdomCondition: [{
-//                        dom: "a1",
-//                        condition: "empty"
-//
-//                    }, {
-//                        dom: "a2",
-//                        condition: "empty"
-//                    }]
+                    jNext:true,
+                    subdomCondition: [{
+                        dom: "a1",
+                        condition: "empty"
+
+                    }, {
+                        dom: "a2",
+                        condition: "empty"
+                    }]
                 },
 //                {
 //                    element: '#step2',
