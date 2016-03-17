@@ -29,7 +29,7 @@
 	}
 
 
-	function Interaction(obj) {
+	function Interaction(obj,options) {
 		if (typeof (obj) === 'string') {
 			this._targetElement = document.querySelector(obj);
 		}
@@ -38,6 +38,7 @@
 			timeout: false
 		}
 		this.st = null;
+		extend(this._options, options);
 
 		this._targetElement && this._targetElement.addEventListener("click", send.bind(this));
 	}

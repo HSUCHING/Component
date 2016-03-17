@@ -15,41 +15,49 @@
 		return a;
 	}
 
-	function send() {
-		this.ajaxSend;
+	function pend() {
+		//this.ajaxSend;
 		if (!this._options.timeout){
 			this._options.loop=0;
 			this._options.timeout=true;
-			this._targetElement.disabled=false;
-			this.st = setTimeout(reset.bind(this), this._options.time);
+			//this._targetElement.disabled=false;
+			this.st = setTimeout(send.bind(this), this._options.time);
 		}
 		this._options.loop++;
 		return this;
 	}
 
-	function reset() {
+	function send() {
+		console.log("hello");
+		this._targetElement.tagName == "BUTTON" ? (this._targetElement.disabled = true) : (this._targetElement.style.pointerEvents = "none");
 		this._ajaxSend();
-		this._options.timeout = false;
-		this._targetElement.tagName == "BUTTON" ? (this._targetElement.disabled = false) : (this._targetElement.style.pointerEvents = "auto");
-		this._targetElement.disabled=true;
 		var time=10;
 		var txt=this._targetElement.innerHTML;
 		this.si=setInterval((function(){
 			this._targetElement.innerHTML=txt+" ("+(time--)+"秒)后重新发送";
-
 			if(time<0){
-				this._targetElement.disabled=false;
+				this._targetElement.tagName == "BUTTON" ? (this._targetElement.disabled = false) : (this._targetElement.style.pointerEvents = "auto");
+				this._options.timeout = false;
 				this._targetElement.innerHTML=txt;
+				reset();
 				clearInterval(this.si);
 			}
 
 		}).bind(this),1000);
+	}
+
+
+
+	function reset(){
 		clearTimeout(this.st);
 	}
 
 
 
-	function Interaction(obj) {
+
+
+
+	function Interaction(obj,options) {
 		if (typeof (obj) === 'string') {
 			this._targetElement = document.querySelector(obj);
 		}
@@ -58,6 +66,8 @@
 			timeout: false
 		}
 		this.st = null;
+		extend(this._options, options);
+
 
 		this._targetElement && this._targetElement.addEventListener("click", send.bind(this));
 	}
