@@ -1,0 +1,141 @@
+.container * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    /*background-color: #e74c3c;*/
+    background-color: white;
+}
+
+.container {
+    margin: 40px auto 20px;
+    width: 184px;
+    height: 184px;
+    position: relative;
+}
+
+.clock {
+    border: 2px solid #F4886D;
+    border-radius: 100%;
+    display: block;
+    height: 184px;
+    width: 184px;
+    position: relative;
+    background-color: #F4886D;
+}
+
+.clock > .block {
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    border-radius: 100%;
+    top: 5px;
+    left: 5px;
+    background-color: white;
+}
+
+.clock > .minute {
+    background: #F4886D;
+    height: 0;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    width: 0;
+    -webkit-transform-origin: 50% 100%;
+    -moz-transform-origin: 50% 100%;
+    -o-transform-origin: 50% 100%;
+    -ms-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    margin: -50px -2px 0;
+    padding: 50px 2px 0;
+}
+
+.clock > .second {
+    background: #F4886D;
+    height: 0;
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    width: 0;
+    -webkit-transform-origin: 50% 100%;
+    -moz-transform-origin: 50% 100%;
+    -o-transform-origin: 50% 100%;
+    -ms-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    margin: -75px -2px 0;
+    padding: 75px 2px 0;
+}
+
+
+.countdown {
+    position: relative;
+    width:300px;
+    margin:0 auto;
+    text-align: center;
+}
+
+.countdown.vibration {
+    -webkit-animation: vibration 0.5s 5;
+    animation: vibration 0.5s 5;
+}
+
+.countdown.style-1 div {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.countdown.style-1 div span {
+    display: block;
+}
+
+.countdown div {
+    font-size: 3rem;
+    font-weight: 100;
+    display: inline-block;
+}
+
+.countdown div span {
+    font-weight: 300;
+    color: #777;
+    font-size: 1rem;
+}
+
+@-webkit-keyframes vibration {
+    0% {
+        margin-right: -2px;
+        margin-top: -2px;
+    }
+    12.5% {
+        margin-right: 2px;
+        margin-top: 0px;
+    }
+    25.0% {
+        margin-right: -2px;
+        top: 2px;
+    }
+    37.5% {
+        margin-right: 0px;
+        margin-top: -2px;
+    }
+    50.0% {
+        margin-right: 0px;
+        margin-top: 2px;
+    }
+    62.5% {
+        margin-right: 2px;
+        margin-top: -2px;
+    }
+    75.0% {
+        margin-right: -2px;
+        margin-top: 0;
+    }
+    87.5% {
+        margin-right: 2px;
+        margin-top: 2px;
+    }
+    100% {
+        margin-right: 0px;
+        margin-top: 2px;
+    }
+}
