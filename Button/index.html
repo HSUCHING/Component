@@ -11,6 +11,12 @@
 <button class="progress-button" data-style="fill" data-vertical>取消</button>
 
 
+<button class="spin-button" data-style="fill" data-vertical><span>发送</span>
+
+    <div class="spin">&#xf110;</div>
+</button>
+
+
 <button class="tap-button" data="确定">点击</button>
 
 
@@ -27,10 +33,14 @@
     </div>
 </div>
 
+
 <div class="collection" data-status="-1">
-    <span class="icon">&#xf006;</span><span>  收藏</span>
+    <span class="icon">&#xf006;</span><span class="col">  收藏</span>
 </div>
 
+<!--<div class="collection" data-status="-1">-->
+<!--<span class="icon">&#xf006;</span><span>  收藏</span>-->
+<!--</div>-->
 
 
 </body>
@@ -48,7 +58,7 @@
                             instance._setProgress(progress);
 
                             if (progress === 1) {
-                                instance._stop(1);
+                                instance._stop(-1);
                                 clearInterval(interval);
                             }
                         }, 200);
@@ -56,14 +66,20 @@
         });
     });
 
-    document.querySelector(".et_status").onclick = function() {
-        (this.getAttribute("data-status") < 0) ? this.classList.add("change"): this.classList.remove("change");
-        this.setAttribute('data-status',-1*this.getAttribute("data-status"));
+    document.querySelector(".et_status").onclick = function () {
+        (this.getAttribute("data-status") < 0) ? this.classList.add("change") : this.classList.remove("change");
+        this.setAttribute('data-status', -1 * this.getAttribute("data-status"));
     }
 
-    document.querySelector(".collection").onclick = function() {
-        (this.getAttribute("data-status") < 0) ? this.classList.add("star"): this.classList.remove("star");
-        this.setAttribute('data-status',-1*this.getAttribute("data-status"));
+    document.querySelector(".collection").onclick = function () {
+        (this.getAttribute("data-status") < 0) ? this.classList.add("star") : this.classList.remove("star");
+        (this.getAttribute("data-status") < 0) ? this.querySelector("span.col").innerHTML = "  已收藏" : this.querySelector("span.col").innerHTML = "  收藏";
+        this.setAttribute('data-status', -1 * this.getAttribute("data-status"));
+    }
+
+
+    document.querySelector(".spin-button").onclick = function () {
+        this.querySelector("div.spin").classList.add("active");
     }
 
 

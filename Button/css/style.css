@@ -5,6 +5,72 @@
     box-sizing: border-box;
 }
 
+.spin-button {
+    position: relative;
+    text-align: center;
+    /*padding: 0 60px;*/
+    width: 200px;
+    height: 4em;
+    padding: 0px;
+    outline: none;
+    border: none;
+    background-color: #F4886D;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1em;
+    line-height: 4em;
+    transition: all 3s;
+}
+
+.spin-button .spin {
+    font-family: FontAwesome;
+    display: none;
+    /*display: inline-block;*/
+    margin-left: 5px;
+    /*opacity: 0;*/
+    /*margin-left:-20px;*/
+    height: 100%;
+    text-align: center;
+    transition: all 1s;
+}
+
+.spin-button .spin.active {
+    display: inline-block;
+    opacity: 1;
+    /*margin-left: 5px;*/
+    /*margin-left: 5px;*/
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+}
+
+/*.spin-button .pulse {*/
+/*-webkit-animation: fa-spin 1s infinite steps(8);*/
+/*animation: fa-spin 1s infinite steps(8);*/
+/*}*/
+
+@-webkit-keyframes fa-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes fa-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
 .progress-button {
     position: relative;
     display: inline-block;
@@ -27,64 +93,49 @@
     -webkit-transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
-.progress-button:hover{
-    box-shadow:none;
+.progress-button:hover {
+    box-shadow: none;
 }
 
-
 /*.progress-button {*/
-    /*position: relative;*/
-    /*display: inline-block;*/
-    /*padding: 0 60px;*/
-    /*outline: none;*/
-    /*border: none;*/
-    /*background: #1d9650;*/
-    /*color: #fff;*/
-    /*text-transform: uppercase;*/
-    /*letter-spacing: 1px;*/
-    /*font-size: 1em;*/
-    /*line-height: 4em;*/
+/*position: relative;*/
+/*display: inline-block;*/
+/*padding: 0 60px;*/
+/*outline: none;*/
+/*border: none;*/
+/*background: #1d9650;*/
+/*color: #fff;*/
+/*text-transform: uppercase;*/
+/*letter-spacing: 1px;*/
+/*font-size: 1em;*/
+/*line-height: 4em;*/
 
-    /*transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);*/
-    /*-webkit-transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);*/
+/*transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);*/
+/*-webkit-transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);*/
 /*}*/
 
 /*.progress-button:after{*/
-    /*content: "";*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*left: 0;*/
-    /*width: 100%;*/
-    /*height: 100%;*/
-    /*box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.2),*/
-    /*inset 0 2px 0 hsla(0,0%,100%,.1),*/
-    /*inset 0 1.2em 0 hsla(0,0%,100%,0.1),*/
-    /*inset 0 -.2em 0 hsla(0,0%,100%,.1),*/
-    /*inset 0 -.25em 0 hsla(0,0%,0%,.25),*/
-    /*0 .25em .25em hsla(0,0%,0%,.05);*/
-    /*opacity: 1;*/
-    /*transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);*/
-    /*-webkit-transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);*/
+/*content: "";*/
+/*position: absolute;*/
+/*top: 0;*/
+/*left: 0;*/
+/*width: 100%;*/
+/*height: 100%;*/
+/*box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.2),*/
+/*inset 0 2px 0 hsla(0,0%,100%,.1),*/
+/*inset 0 1.2em 0 hsla(0,0%,100%,0.1),*/
+/*inset 0 -.2em 0 hsla(0,0%,100%,.1),*/
+/*inset 0 -.25em 0 hsla(0,0%,0%,.25),*/
+/*0 .25em .25em hsla(0,0%,0%,.05);*/
+/*opacity: 1;*/
+/*transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);*/
+/*-webkit-transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);*/
 /*}*/
-
-
-
 
 /*.progress-button:hover:after{*/
-    /*/!*box-shadow:none;*!/*/
-    /*opacity: 0;*/
+/*/!*box-shadow:none;*!/*/
+/*opacity: 0;*/
 /*}*/
-
-
-
-
-
-
-
-
-
-
-
 
 .progress-button[disabled],
 .progress-button[disabled].state-loading {
@@ -97,7 +148,7 @@
 }
 
 .progress-button .content::before,
-.progress-button .content::after  {
+.progress-button .content::after {
     position: absolute;
     left: 50%;
     color: #C1C1C1;
@@ -113,8 +164,8 @@
     transform: rotate(-45deg);
     -webkit-transform: rotate(-45deg);
     background: transparent;
-    border-left:4px solid #44DB5E;
-    border-bottom:4px solid #44DB5E;
+    border-left: 4px solid #44DB5E;
+    border-bottom: 4px solid #44DB5E;
     border-radius: 2px;
 }
 
@@ -138,12 +189,10 @@
     border-radius: 20px;
 }
 
-
-
 .progress-button.state-success .content::before,
 .progress-button.state-success .content::after,
 .progress-button.state-error .content::before,
-.progress-button.state-error .content::after{
+.progress-button.state-error .content::after {
     opacity: 1;
 }
 
@@ -207,7 +256,7 @@
 
 .progress-button[data-perspective] .content,
 .progress-button[data-perspective] .progress {
-    outline: 1px solid rgba(0,0,0,0); /* Smoothen jagged edges in FF */
+    outline: 1px solid rgba(0, 0, 0, 0); /* Smoothen jagged edges in FF */
 }
 
 /* Individual styles */
@@ -265,8 +314,7 @@
     transform: translateY(-100%);
 }
 
-
-.tap-button{
+.tap-button {
     border: none;
     font-family: inherit;
     font-size: inherit;
@@ -286,14 +334,14 @@
 }
 
 .tap-button:after {
-    content:attr(data);
+    content: attr(data);
     width: 100%;
     height: 0;
     bottom: 0;
     left: 0;
     position: absolute;
     background: #B36853;
-    transition:all 0.3s;
+    transition: all 0.3s;
     /*z-index: -1;*/
     -webkit-transition: all 0.3s;
     overflow: hidden;
@@ -303,19 +351,16 @@
 
 .tap-button:hover,
 .tap-button:active {
-    color: transparent;
+    /*color: transparent;*/
+    background-color: rgba(200, 200, 200, 0.8);
 }
 
 .tap-button:hover:after,
 .tap-button:active:after {
-    height: 100%;
-    color: white;
-    padding:25px 0  25px 0;
+    /*height: 100%;*/
+    /*color: white;*/
+    /*padding:25px 0  25px 0;*/
 }
-
-
-
-
 
 .et_status {
     background: #DCE0E0;
@@ -344,25 +389,24 @@
     -webkit-transition: all 1s;
     text-align: center;
     line-height: 40px;
-    color:#949495;
-    border:1px solid #949495;
+    color: #949495;
+    border: 1px solid #949495;
 }
 
-.collection span.icon{
+.collection span.icon {
     font-family: FontAwesome;
 }
 
-.collection.star span.icon{
+.collection.star span.icon {
     /*color:red;*/
 }
 
-.collection.star{
+.collection.star {
     /*background-color: darkred;*/
-    color:#F4886D;
+    color: #F4886D;
 }
 
-
-.et_status>div {
+.et_status > div {
     width: 100%;
     height: 100%;
     display: table;
@@ -373,16 +417,16 @@
     top: 0px;
     left: 0px;
     z-index: 2;
-    color:white;
+    color: white;
 }
 
-.et_status>div>span {
+.et_status > div > span {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
 }
 
-.et_status>div:nth-child(even) {
+.et_status > div:nth-child(even) {
     background: #F4886D;
     color: white;
     z-index: 1;
