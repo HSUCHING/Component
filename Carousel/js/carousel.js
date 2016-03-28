@@ -9,10 +9,11 @@ document.querySelector("button").onclick=function(){
     series[1].innerHTML=arrayData[dataIndex%4];
     dataIndex++;
     series[0].style.left="-200%";
-    series[1].classList.add("active");
+    // series[1].classList.add("active");
     // series[0].style.opacity=0;
     // series[0].style.visibility="hidden";
     var st= setTimeout(function(){
+        series[1].classList.add("active");
         series.push(series.shift());
         for(var zIndex in series){
             series[zIndex].style.zIndex=3-zIndex;
