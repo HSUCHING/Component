@@ -437,4 +437,82 @@
     /*opacity:0.5;*/
 }
 
+.basicButton {
+    border: none;
+    font-family: SimHei;
+    font-size: 1.2em;
+    color: white;
+    background-color: #F4886D;
+    cursor: pointer;
+    margin: 0px;
+    padding: 0px;
+    width: 200px;
+    height: 50px;
+    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    /*font-weight: 700;*/
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.basicButton.active > div {
+    animation: shrink 0.8s;
+    -webkit-animation: shrink 0.8s;
+}
+
+.basicButton > div {
+    width: 100%;
+    height: 0%;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    position: absolute;
+    background: #B36853;
+    overflow: hidden;
+    line-height: 0px;
+    color: transparent;
+    /*   mix-blend-mode: multiply; */
+}
+
+@-webkit-keyframes shrink {
+    0% {
+        height: 0%;
+        line-height: 0px;
+        color: transparent;
+    }
+    50% {
+        height: 100%;
+        line-height: 50px;
+        color: transparent;
+    }
+    100% {
+        color: white;
+        height: 100%;
+        line-height: 50px;
+    }
+
+}
+
+@keyframes shrink {
+    0% {
+        height: 0%;
+        line-height: 0px;
+        color: transparent;
+    }
+    50% {
+        height: 100%;
+        line-height: 50px;
+        color: transparent;
+    }
+    100% {
+        height: 100%;
+        line-height: 50px;
+        color: white;
+    }
+}
+
 

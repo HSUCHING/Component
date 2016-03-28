@@ -42,6 +42,13 @@
 <!--<span class="icon">&#xf006;</span><span>  收藏</span>-->
 <!--</div>-->
 
+<button class="basicButton">
+    <span>确定</span>
+
+    <div>点击</div>
+</button>
+
+
 
 </body>
 <script type="text/javascript" src="js/progressbutton.js">
@@ -80,6 +87,10 @@
 
     document.querySelector(".spin-button").onclick = function () {
         this.querySelector("div.spin").classList.add("active");
+    }
+
+    document.querySelector(".basicButton").onclick = function () {
+       this.classList.add("active");
     }
 
 
