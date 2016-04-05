@@ -105,7 +105,6 @@ html, body {
 }
 
 .indicator {
-    display: none;
     width: 30%;
     z-index: 200;
     top: 48px;
