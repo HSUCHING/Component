@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="setting image_picker">
+    <div class="settings_wrap">
+        <label class="drop_target">
+            <div class="image_preview">
+                <div id="remove">&#xf00d;</div>
+            </div>
+            <input id="inputFile" type="file" name="files"/>
+
+        </label>
+        <div class="settings_actions vertical">
+            <div class="description">点击上传医生胸牌,带照片医生个人介绍照片</div>
+            <a data-action="view_sample_image" href="http://www.sina.com">查看样张</a>
+        </div>
+        <div class="image_details">
+            <label class="input_line image_title">
+                <input type="text" placeholder="Title"/>
+            </label>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="js/upload.js"></script>
+</body>
+</html>
