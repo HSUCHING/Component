@@ -1,0 +1,18 @@
+{
+  "name": "Faker",
+  "version": "0.0.1",
+  "comment":"npm test",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Fake"
+  ],
+  "author": "Hsuching",
+  "license": "MIT",
+  "devDependencies": {
+    "Faker": "*",
+    "express":"*",
+    "body-parser":"*"
+  }
+}
