@@ -46,7 +46,7 @@ app.post('/getTestData', function (req, res) {
 app.get('/getTestData/:version', function (req, res) {
     //get Parameter;
     console.log(req.query.name);
-    console.log(req.param('name'));
+    console.log(req.params.version);
     res.send(JSON.stringify(bigSet));
 });
 
