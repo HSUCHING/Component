@@ -66,3 +66,33 @@
 
 
 });
+
+
+!String.prototype.hasOwnProperty("flatten") && (String.prototype.flatten = function (arr1, arr2) {
+
+    //数组合并
+
+    if (arguments == 1) {
+        arr1 = Array.prototype.concat.apply([], arr1);
+        return arr1.some(Array.isArray) ? flatten(arr1) : arr1;
+    } else if (arguments == 2) {
+        var result = [];
+        var arr = [];
+
+        arr = arr2.reduce(function (prev, curr) {
+            prev.push(curr);
+            return prev;
+        }, arr1);
+
+        for (var i = 0; i < arr.length; i++) {
+            var index = arr[i];
+            if (result.indexOf(index) === -1) {
+                result.push(index);
+            }
+        }
+        return result;
+    }
+
+});
+
+

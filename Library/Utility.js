@@ -127,3 +127,15 @@
     // }
 
 });
+
+
+!Utility.addCommas && (Utility.addCommas = function (val) {
+    var aIntNum = val.toString().split('.');
+    if (aIntNum[0].length >= 5) {
+        aIntNum[0] = aIntNum[0].replace(/(\d)(?=(\d{3})+$)/g, '$1,');
+    }
+    if (aIntNum[1] && aIntNum[1].length >= 5) {
+        aIntNum[1] = aIntNum[1].replace(/(\d{3})/g, '$1 ');
+    }
+    return aIntNum.join('.');
+});
