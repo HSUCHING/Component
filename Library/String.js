@@ -96,3 +96,66 @@
 });
 
 
+!String.prototype.hasOwnProperty("findLongestWord") && (String.prototype.findLongestWord = function () {
+
+    //数组合并
+
+    var strSplit = this.split(' ');
+
+    // 得到数组 strSplit = ["May", "the", "force", "be", "with", "you"];
+
+    // 第2步使用reduce方法，取到strSplit数组中最长的元素
+    var longestWord = strSplit.reduce(function (longest, currentWord) {
+        return currentWord.length > longest.length ? currentWord : longest;
+    }, "");
+    // 取到最长的元素longestWord = "force"
+    /*
+     * strSplit = ["May", "the", "force", "be", "with", "you"];
+     * currentWord   longest   currentWord.length   longest.length   currentWord.length > longest.length  longestWord
+     *  "May"         ""            3                   0                  yes                               "May"
+     *  "the"         "May"         3                   3                  no                                "May"
+     *  "force"       "May"         5                   3                  yes                               "force"
+     *  "be"          "force"       2                   5                  no                                "force"
+     *  "with"        "force"       4                   5                  no                                "force"
+     *  "you"         "force"       3                   5                  no                                "force"
+     */
+
+    // 第3步. 返回longestWord的length
+    return longestWord.length; // 5
+    // longestWord.length => "force".length => 5
+
+});
+
+!String.prototype.hasOwnProperty("end") && (String.prototype.end = function (target) {
+
+    //数组合并
+
+    var endingPart = this.substr(-target.length);
+    return target === endingPart;
+
+});
+
+
+!String.prototype.hasOwnProperty("repeat") && (String.prototype.repeat = function (num) {
+
+    // num = Number(num);
+    // var str=this;
+    //
+    // var result = '';
+    // while (true) {
+    //     if (num & 1) { // (1)
+    //         result += str;
+    //     }
+    //     num >>>= 1; // (2)
+    //     if (num <= 0) {break;}
+    //     str += str;
+    // }
+    // return result;
+    var str=this;
+    return (num < 0) ? "" : new Array(num + 1).join(str);
+
+
+});
+
+
+

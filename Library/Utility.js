@@ -139,3 +139,35 @@
     }
     return aIntNum.join('.');
 });
+
+
+!Utility.falsy && (Utility.falsy = function (value) {
+    // if (value) {
+    //     return true;
+    // }
+    //
+    // if (value === false || value === null || value === 0 || value === "" || value === undefined || isNaN(value)) {
+    //     return false;
+    // } else {
+    //     return true;
+    // }
+
+    return Boolean(value);
+});
+
+!Utility.isLetter && (Utility.isLetter = function (letter) {
+
+    if ((letter >= 65 && letter <= 90) || (letter >= 97 && letter <= 122)) {
+        return true;
+    } else {
+        return false;
+    }
+
+});
+
+!Utility.rot13 && (Utility.rot13 = function (str) {
+    return str.replace( /[A-Za-z]/g , function(c) {
+        return String.fromCharCode( c.charCodeAt(0) + ( c.toUpperCase() <= "M" ? 13 : -13 ) );
+    } );
+
+});

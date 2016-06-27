@@ -81,8 +81,49 @@
     //     }
     //     newArr[0].push(arr[i]);
     // }
-    
+
     return newArr;
+});
+
+
+!Array.prototype.hasOwnProperty("where") && (Array.prototype.where = function (num) {
+    var arr = this;
+    arr.push(num);
+    var compare = function (a, b) {
+        if (a < b) {
+            return -1; // a排在b的前面
+        } else if (a > b) {
+            return 1; // a排在b的后面
+        } else {
+            return 0; // a和b的位置保持不变
+        }
+    };
+    arr.sort(compare);
+
+
+    return arr.indexOf(num);
+});
+
+!Array.prototype.hasOwnProperty("destroyer") && (Array.prototype.destroyer = function (arr) {
+    var newArray = this; // [1, 2, 1, 3, 2, 1, 3, 4, 2, 6]
+    // 声明一个空数组，用来存储需要从`newArray`中删除的元素
+    var removeArgs = Array.prototype.slice.call(arguments);
+
+    // 声明filter()方法的callback函数
+
+    function isFalse (value) {
+        return removeArgs.indexOf(value) === -1;
+
+        /*
+         *  removeArgs = [1,2]
+         *  removeArgs.indexOf(value) = ?  removeArgs.indexOf(value) === -1
+         *  [1,2].indexOf(1) = 0              false
+         *  [1,2].indexOf(2) = 1              false
+         *
+         */
+    }
+
+    return newArray.filter(isFalse);// newArray中删除1,2
 });
 
 
