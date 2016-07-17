@@ -1,0 +1,46 @@
+html,
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    /* Safari */
+}
+
+.section {
+    border: 1px solid green;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.listItem {
+    margin: 0px;
+    border: 1px solid red;
+    width: 100%;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    position: absolute;
+    transition: top 1s ease;
+    -webkit-transition: top 1s ease;
+}
+
+.scrollMask{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+}
+
+.item {
+}
