@@ -41,7 +41,6 @@
     border-radius: 50%;
 }
 .sliderHandler:after{
-:after {
     content: "";
     display: block;
     width: 5px;
@@ -59,6 +58,5 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.13), rgba(255, 255, 255, 0));
     -webkit-border-radius: 50%;
     border-radius: 50%;
-}
 }
 

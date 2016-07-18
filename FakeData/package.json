@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "comment":"npm test",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "succuess":"echo succuess"
   },
   "keywords": [
     "Fake"
