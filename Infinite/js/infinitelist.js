@@ -84,7 +84,7 @@ function isDataThreshold(scroll, cursor) {
         return a + b;
     });
     cursor.position.reduce(function (a, b) {
-        if (a >= (0.7 * height - cursor.container.height)) {
+        if (a >= (0.7 * height - cursor.container.height +0.3*((cursor.current.end-19)/7+1)*7*118)) {
             topThreshold = a + b;
             return false;
         } else {
