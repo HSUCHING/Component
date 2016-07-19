@@ -11,11 +11,16 @@ var cursor = {
     position: [],
     //滑动位置
     scrollPosition: {
-        y:0,
-        x:0
-    }
+        y: 0,
+        x: 0
+    },
+    container: {
+        width: document.body.offsetWidth,
+        height: document.body.offsetHeight
+    },
+    fixHeight: 118
 };
-var number = 50;
+var number = 20;
 var sectionEl = document.querySelector(".section");
 var initialPosition = {
     x: sectionEl.offsetWidth,
@@ -79,7 +84,7 @@ function isDataThreshold(scroll, cursor) {
         return a + b;
     });
     cursor.position.reduce(function (a, b) {
-        if (a >= 0.7 * height) {
+        if (a >= (0.7 * height - cursor.container.height)) {
             topThreshold = a + b;
             return false;
         } else {
@@ -87,7 +92,7 @@ function isDataThreshold(scroll, cursor) {
         }
     });
     if ((scroll.offset.y < (-1) * topThreshold)) {
-        return true
+        return true;
     } else {
         return false;
     }
@@ -171,7 +176,7 @@ function _update() {
             diff = (y - startY);
             startY = y;
             direction = (diff <= 0) ? 1 : -1;
-            cursor.scrollPosition.y+=diff;
+            cursor.scrollPosition.y += diff;
             var param = {
                 offset: {
                     y: cursor.scrollPosition.y
@@ -248,7 +253,8 @@ function recycle() {
 function refreshData() {
 
     // cursor.current.end =;
-    loadData(10);
+    var refreshItem = Math.floor((0.7 * cursor.fixHeight * number - cursor.container.height) / cursor.fixHeight);
+    loadData(refreshItem);
 }
 
 
