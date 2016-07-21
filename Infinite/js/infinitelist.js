@@ -9,6 +9,10 @@ var cursor = {
     },
     //每个数据单元的跨度
     position: [],
+    currentPos: {
+        start: 0,
+        end: -1
+    },
     //滑动位置
     scrollPosition: {
         y: 0,
@@ -20,7 +24,7 @@ var cursor = {
     },
     fixHeight: 118
 };
-var number = 20;
+var number = Math.ceil(cursor.container.height * 2 / cursor.fixHeight);
 var sectionEl = document.querySelector(".section");
 var initialPosition = {
     x: sectionEl.offsetWidth,
@@ -47,7 +51,7 @@ var els = sectionEl.querySelectorAll(".listItem");
 
 function calculate() {
 
-    return 20;
+    return number;
 }
 
 function calItemsIndex(index, num) {
@@ -68,6 +72,10 @@ function loadData(num, param) {
             });
         }
         cursor.current.end++;
+        cursor.currentPos.end = cursor.current.end;
+        if ((cursor.currentPos.end - cursor.currentPos.start) >= calculate()) {
+            cursor.currentPos.start++;
+        }
         var el = els[cursor.current.end % number];
         el.classList.add("active");
         el.innerHTML = data[cursor.current.end];
@@ -83,15 +91,16 @@ function isDataThreshold(scroll, cursor) {
     var height = cursor.position.reduce(function (a, b) {
         return a + b;
     });
-    cursor.position.reduce(function (a, b) {
-        if (a >= (0.7 * height - cursor.container.height +0.3*((cursor.current.end-19)/7+1)*7*118)) {
-            topThreshold = a + b;
-            return false;
-        } else {
-            return a + b;
-        }
-    });
-    if ((scroll.offset.y < (-1) * topThreshold)) {
+    // cursor.position.reduce(function (a, b) {
+    //     if (a >= (0.25 * (height - cursor.currentPos.start * 118))) {
+    //         topThreshold = a + b;
+    //         return false;
+    //     } else {
+    //         return a + b;
+    //     }
+    // });
+    topThreshold = height - cursor.currentPos.start * 118;
+    if ((scroll.offset.y < (-1) * topThreshold * 0.25 - cursor.currentPos.start * 118)) {
         return true;
     } else {
         return false;
@@ -253,7 +262,8 @@ function recycle() {
 function refreshData() {
 
     // cursor.current.end =;
-    var refreshItem = Math.floor((0.7 * cursor.fixHeight * number - cursor.container.height) / cursor.fixHeight);
+    var refreshItem = 3;
+    // var refreshItem = Math.floor((0.7 * cursor.fixHeight * number - cursor.container.height) / cursor.fixHeight);
     loadData(refreshItem);
 }
 
