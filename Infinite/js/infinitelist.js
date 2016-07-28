@@ -59,36 +59,68 @@ function calItemsIndex(index, num) {
 }
 
 
-setTimeout(loadData(calculate()), 100);
+setTimeout(loadData(calculate(), {direction: 1}), 100);
 
 
 function loadData(num, param) {
     var fillItemsNumber = num;
     for (var j = 0; j < fillItemsNumber; j++) {
         var lastTop = 0;
-        if (cursor.current.end != -1) {
-            lastTop = cursor.position.reduce(function (a, b) {
+        if (param.direction > 0) {
+            if (cursor.currentPos.end != -1) {
+                lastTop = cursor.position.slice(0, cursor.currentPos.end + 1).reduce(function (a, b) {
+                    return a + b;
+                });
+            }
+            cursor.currentPos.end++;
+            if ((cursor.currentPos.end - cursor.currentPos.start) >= calculate()) {
+                cursor.currentPos.start++;
+            }
+            var el = els[cursor.currentPos.end % number];
+            el.innerHTML = data[cursor.currentPos.end];
+            el.classList.add("active");
+            el.style.transitionDelay = (j) * 0.3 + "s";
+            el.style.top = lastTop + "px";
+            cursor.position.push(els[cursor.currentPos.end % number].offsetHeight);
+        } else {
+            lastTop = cursor.position.slice(0, cursor.currentPos.start).reduce(function (a, b) {
                 return a + b;
             });
+            cursor.currentPos.start--;
+            if ((cursor.currentPos.end - cursor.currentPos.start) >= calculate()) {
+                cursor.currentPos.end--;
+            }
+            var el = els[cursor.currentPos.start % number];
+            el.innerHTML = data[cursor.currentPos.start];
+            el.classList.add("active");
+            el.style.transitionDelay = (j) * 0.3 + "s";
+            el.style.top = (lastTop - cursor.position[cursor.currentPos.start]) + "px";
         }
-        cursor.current.end++;
-        cursor.currentPos.end = cursor.current.end;
-        if ((cursor.currentPos.end - cursor.currentPos.start) >= calculate()) {
-            cursor.currentPos.start++;
-        }
-        var el = els[cursor.current.end % number];
-        el.classList.add("active");
-        el.innerHTML = data[cursor.current.end];
-        el.style.transitionDelay = (j) * 0.3 + "s";
-        el.style.top = lastTop + "px";
-        cursor.position.push(els[cursor.current.end % number].offsetHeight);
+        //
+        // var lastTop = 0;
+        // if (cursor.current.end != -1) {
+        //     lastTop = cursor.position.reduce(function (a, b) {
+        //         return a + b;
+        //     });
+        // }
+        // cursor.current.end++;
+        // cursor.currentPos.end = cursor.current.end;
+        // if ((cursor.currentPos.end - cursor.currentPos.start) >= calculate()) {
+        //     cursor.currentPos.start++;
+        // }
+        // var el = els[cursor.current.end % number];
+        // el.classList.add("active");
+        // el.innerHTML = data[cursor.current.end];
+        // el.style.transitionDelay = (j) * 0.3 + "s";
+        // el.style.top = lastTop + "px";
+        // cursor.position.push(els[cursor.current.end % number].offsetHeight);
     }
 }
 
 function isDataThreshold(scroll, cursor) {
     var fillItemsNumber = calculate();
     var topThreshold = 0;
-    var height = cursor.position.reduce(function (a, b) {
+    var height = cursor.position.slice(0, cursor.currentPos.end + 1).reduce(function (a, b) {
         return a + b;
     });
     // cursor.position.reduce(function (a, b) {
@@ -99,11 +131,20 @@ function isDataThreshold(scroll, cursor) {
     //         return a + b;
     //     }
     // });
-    topThreshold = height - cursor.currentPos.start * 118;
-    if ((scroll.offset.y < (-1) * topThreshold * 0.25 - cursor.currentPos.start * 118)) {
-        return true;
+    if (scroll.direction > 0) {
+        topThreshold = height - cursor.currentPos.start * 118;
+        if ((scroll.offset.y < ((-1) * topThreshold * 0.25 - cursor.currentPos.start * 118)) && (cursor.currentPos.end < (1000 - 1))) {
+            return true;
+        } else {
+            return false;
+        }
     } else {
-        return false;
+        topThreshold = height - cursor.currentPos.start * 118;
+        if ((scroll.offset.y > ((-1) * topThreshold * 0.25 - cursor.currentPos.start * 118)) && (cursor.currentPos.start > 0)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }
@@ -186,10 +227,12 @@ function _update() {
             startY = y;
             direction = (diff <= 0) ? 1 : -1;
             cursor.scrollPosition.y += diff;
+            console.log(cursor.scrollPosition.y);
             var param = {
                 offset: {
                     y: cursor.scrollPosition.y
-                }
+                },
+                direction: direction
             };
             refresh(param);
             _scroll(scrollSection.querySelectorAll("*>figure.active"), param);
@@ -246,7 +289,7 @@ function refresh(param) {
     var scrollSection = document.querySelector(".section");
     if (isDataThreshold(param, cursor)) {
         recycle();
-        refreshData();
+        refreshData(param);
         // _scroll(scrollSection.querySelectorAll("*>figure.active"), param);
     } else {
 
@@ -259,12 +302,12 @@ function recycle() {
 }
 
 
-function refreshData() {
+function refreshData(param) {
 
     // cursor.current.end =;
-    var refreshItem = 3;
+    var refreshItem = 1;
     // var refreshItem = Math.floor((0.7 * cursor.fixHeight * number - cursor.container.height) / cursor.fixHeight);
-    loadData(refreshItem);
+    loadData(refreshItem, param);
 }
 
 
