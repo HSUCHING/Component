@@ -6,6 +6,9 @@
   "scripts": {
     "test": "jest"
   },
+  "babel": {
+    "presets": ["react"]
+  },
   "keywords": [
     "Sanpkite",
     "React.js"
@@ -36,5 +39,18 @@
     "style-loader": "^0.13.1",
     "vinyl-source-stream": "^1.1.0",
     "webpack": "^1.13.1"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest",
+    "testFileExtensions": [
+      "es6",
+      "js"
+    ],
+    "unmockedModulePathPatterns": [
+      "<rootDir>/node_modules/react",
+      "<rootDir>/node_modules/react-dom",
+      "<rootDir>/node_modules/react-addons-test-utils",
+      "<rootDir>/node_modules/fbjs"
+    ]
   }
 }
