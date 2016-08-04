@@ -7,7 +7,9 @@
     "test": "jest"
   },
   "babel": {
-    "presets": ["react"]
+    "presets": [
+      "react"
+    ]
   },
   "keywords": [
     "Sanpkite",
@@ -23,11 +25,13 @@
     "browserify": "^13.0.1",
     "coffee-loader": "^0.7.2",
     "css-loader": "^0.23.1",
+    "flux": "^2.1.1",
     "gulp": "^3.9.1",
     "jest-cli": "^14.1.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "node-sass": "^3.8.0",
+    "object-assign": "^4.1.0",
     "react": "^15.2.1",
     "react-addons-test-utils": "^15.3.0",
     "react-dom": "^15.2.1",
