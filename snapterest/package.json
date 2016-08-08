@@ -37,6 +37,7 @@
     "react-dom": "^15.2.1",
     "react-hot-loader": "^1.3.0",
     "react-proxy-loader": "^0.3.4",
+    "react-webpack-node": "^1.7.16",
     "sass-loader": "^4.0.0",
     "scss": "^0.2.4",
     "snapkite-stream-client": "^1.0.3",

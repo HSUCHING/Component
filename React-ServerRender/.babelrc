@@ -1,0 +1,10 @@
+/**
+ * Created by chinghsu on 16/8/8.
+ */
+{
+  "presets": [
+    "es2015",
+    "react"
+  ],
+  "plugins": []
+}
