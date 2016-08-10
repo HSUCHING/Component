@@ -4,7 +4,9 @@
   "description": "WebPack",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "dev":"webpack-dev-server --devtool eval --progress --colors --hot --inline",
+    "build":"webpack --progress --colors --watch"
   },
   "keywords": [
     "WebPack"

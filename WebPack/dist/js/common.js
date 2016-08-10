@@ -88,7 +88,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://127.0.0.1:9090/dist/";
+/******/ 	__webpack_require__.p = "http://0.0.0.0:8080/dist/js";
 /******/ })
 /************************************************************************/
 /******/ ([]);

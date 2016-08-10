@@ -6,21 +6,12 @@ var path=require('path');
 var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 module.exports = {
     plugins: [commonsPlugin],
-    // (1) Method
-    // entry:{
-    //     index:'./src/js'
-    //     index:'./src/js/index.js'
-    // },
-    // (2) Method
-    entry:[
-        path.resolve(__dirname,'src/js')
+    entry: [
+        'webpack-dev-server/client?http://0.0.0.0:8080',
+        'webpack/hot/only-dev-server',
+        path.resolve(__dirname,'src/js/index.js')
+        // path.resolve(__dirname,'src/js')
     ],
-    // entry: [
-    //     // 'webpack-dev-server/client?http://0.0.0.0:8080',
-    //     // 'webpack/hot/only-dev-server',
-    //     // path.resolve(__dirname,'src/js/index.js')
-    //     {index: './src/js/index.js'}
-    // ],
     output: {
         publicPath: "http://0.0.0.0:8080/dist/js",
         path: path.resolve(__dirname,'dist/js'),
