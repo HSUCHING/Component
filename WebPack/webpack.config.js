@@ -13,7 +13,6 @@ module.exports = {
     // },
     // (2) Method
     entry:[
-        'webpack-dev-server/client?http://0.0.0.0:8080',
         path.resolve(__dirname,'src/js')
     ],
     // entry: [
