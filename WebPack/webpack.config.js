@@ -1,6 +1,7 @@
 /**
  * Created by chinghsu on 16/8/9.
  */
+//http://localhost:8080/webpack-dev-server/dist/html/index.html
 var webpack = require('webpack');
 var path=require('path');
 var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
@@ -15,6 +16,7 @@ module.exports = {
     entry:[
         path.resolve(__dirname,'src/js')
     ],
+    devtool: 'eval-source-map',
     // entry: [
     //     // 'webpack-dev-server/client?http://0.0.0.0:8080',
     //     // 'webpack/hot/only-dev-server',
