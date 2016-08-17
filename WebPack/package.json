@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "dev":"webpack-dev-server --devtool eval --progress --colors --hot --inline",
-    "build":"webpack --progress --colors --watch"
+    "dev": "webpack-dev-server --devtool eval --progress --colors --hot --inline",
+    "build": "webpack --progress --colors --watch"
   },
   "keywords": [
     "WebPack"
@@ -16,11 +16,14 @@
   "devDependencies": {
     "babel-loader": "^6.2.4",
     "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.22.0",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
     "node-sass": "^3.8.0",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   }

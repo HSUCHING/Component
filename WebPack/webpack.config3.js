@@ -6,22 +6,17 @@ var webpack = require('webpack');
 var path = require('path');
 var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
-    // plugins: [commonsPlugin, new ExtractTextPlugin("style.css"), new HtmlWebpackPlugin({
-    //     filename: 'test.html',
-    //     template: 'src/html/index.html'
-    // })],
-    plugins: [commonsPlugin, new ExtractTextPlugin("style.css")],
+    plugins: [commonsPlugin, new ExtractTextPlugin("[name].css")],
     // (1) Method
     // entry:{
-    // index:'./src/js'
-    // index:'./src/js/index.js'
+    //     index:'./src/js'
+    //     index:'./src/js/index.js'
     // },
     // (2) Method
     entry: [
-        // 'webpack-dev-server/client?http://0.0.0.0:8080',
-        // 'webpack/hot/only-dev-server',
+        'webpack-dev-server/client?http://0.0.0.0:8080',
+        'webpack/hot/only-dev-server',
         path.resolve(__dirname, 'src/js')
     ],
 
@@ -55,12 +50,5 @@ module.exports = {
     //         ActionType: 'js/actions/ActionType.js',
     //         AppAction: 'js/actions/AppAction.js'
     //     }
-    // }
-    // devServer: {
-    //     contentBase: './',
-    //     host: '0.0.0.0',
-    //     port: 8080, //比如我是监听8080端口
-    //     inline: true, //可以监控js变化
-    //     hot: true //热启动
     // }
 };

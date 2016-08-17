@@ -20,10 +20,9 @@ module.exports = {
     // },
     // (2) Method
     entry: [
-        // 'webpack-dev-server/client?http://0.0.0.0:8080',
-        // 'webpack/hot/only-dev-server',
-        path.resolve(__dirname, 'src/js')
-    ],
+    // 'webpack-dev-server/client?http://0.0.0.0:8080',
+    // 'webpack/hot/only-dev-server',
+    path.resolve(__dirname, 'src/js')],
 
     // entry: [
     //     // 'webpack-dev-server/client?http://0.0.0.0:8080',
@@ -38,29 +37,9 @@ module.exports = {
     },
     module: {
         loaders: [
-            // {test: /\.css$/, loader: 'style!css'},
-            {test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader")},
-            {test: /\.js|jsx$/, loaders: ['babel']},
-            {test: /\.scss$/, loader: 'style!css!sass?sourceMap'},
-            {test: /\.less$/, loader: "style!css!less"},
-            {test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192'}
-        ]
-    },
-    //其它解决方案配置
-    // resolve: {
-    //     root: '/github/flux-example/src', //绝对路径
-    //     extensions: ['', '.js', '.json', '.scss'],
-    //     alias: {
-    //         AppStore: 'js/stores/AppStores.js',
-    //         ActionType: 'js/actions/ActionType.js',
-    //         AppAction: 'js/actions/AppAction.js'
-    //     }
-    // }
-    // devServer: {
-    //     contentBase: './',
-    //     host: '0.0.0.0',
-    //     port: 8080, //比如我是监听8080端口
-    //     inline: true, //可以监控js变化
-    //     hot: true //热启动
-    // }
+        // {test: /\.css$/, loader: 'style!css'},
+        { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") }, { test: /\.js|jsx$/, loaders: ['babel'] }, { test: /\.scss$/, loader: 'style!css!sass?sourceMap' }, { test: /\.less$/, loader: "style!css!less" }, { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }]
+    }
 };
+
+//# sourceMappingURL=webpack.config-compiled.js.map
