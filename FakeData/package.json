@@ -1,10 +1,11 @@
 {
   "name": "Faker",
   "version": "0.0.1",
-  "comment":"npm test",
+  "comment": "npm test",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "succuess":"echo succuess"
+    "succuess": "echo succuess",
+    "mock": "node GenerateData.js"
   },
   "keywords": [
     "Fake"
@@ -13,7 +14,10 @@
   "license": "MIT",
   "devDependencies": {
     "Faker": "*",
-    "express":"*",
-    "body-parser":"*"
+    "body-parser": "*",
+    "express": "*",
+    "json-schema-faker": "^0.3.6",
+    "json-schema-mock": "0.0.8",
+    "jsoneditor": "^5.5.8"
   }
 }

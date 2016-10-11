@@ -1,0 +1,26 @@
+{
+  "name": "ethicall-frontend-api",
+  "version": "0.0.1",
+  "description": "Frontend-API on Ethicall",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "swagger": "node index.js"
+  },
+  "keywords": [
+    "Ethicall",
+    "Frontend",
+    "Test",
+    "API"
+  ],
+  "author": "Hsuching",
+  "license": "MIT",
+  "devDependencies": {
+    "express": "^4.14.0",
+    "jsoneditor": "^5.5.7",
+    "open": "0.0.5",
+    "Faker": "*",
+    "body-parser": "*",
+    "json-schema-faker": "^0.3.6"
+  }
+}

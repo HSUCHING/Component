@@ -1,0 +1,33 @@
+{
+  "name": {
+    "type": "userName"
+  },
+  "card": {
+    "type": "Obj",
+    "data": {
+      "id": {
+        "type": "uuid"
+      },
+      "sex":{
+        "type":"sex"
+      },
+      "name":{
+        "type":"medicineName"
+      }
+    }
+  },
+  "profile": {
+    "type": "Array",
+    "num": 10,
+    "data": {
+      "img": {
+        "type": "image"
+      },
+      "telephone": {
+        "type": "phoneNumber"
+      }
+    }
+  }
+}
+
+

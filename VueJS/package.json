@@ -1,0 +1,17 @@
+{
+  "name": "vuejs",
+  "version": "1.0.0",
+  "description": "Vue,Javascript",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "Vue"
+  ],
+  "author": "Hsuching",
+  "license": "MIT",
+  "devDependencies": {
+    "vue": "^2.0.1"
+  }
+}
