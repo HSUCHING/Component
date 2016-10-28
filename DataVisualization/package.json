@@ -1,0 +1,24 @@
+{
+  "name": "datavisualization",
+  "version": "1.0.0",
+  "description": "Data,SVG,Visualization,Map,Ethicall,Real-Time",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Data",
+    "SVG",
+    "Visualization",
+    "Map",
+    "Ethicall",
+    "Real-Time"
+  ],
+  "author": "Hsuching",
+  "license": "MIT",
+  "devDependencies": {
+    "c3": "^0.4.11",
+    "d3": "^3.5.3",
+    "datamaps": "^0.5.8"
+  }
+}
