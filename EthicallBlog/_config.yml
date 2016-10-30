@@ -79,5 +79,5 @@ admin:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repository: https://github.com/HSUCHING/EthicalLord.github.io.git
+  repository: https://github.com/HSUCHING/Ethicall-Lord.github.io.git
   branch: master
