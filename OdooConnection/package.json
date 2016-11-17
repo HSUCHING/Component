@@ -1,0 +1,17 @@
+{
+  "name": "odooconnection",
+  "version": "1.0.0",
+  "description": "Odoo Connection",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Odoo"
+  ],
+  "author": "Hsuching",
+  "license": "MIT",
+  "dependencies": {
+    "node-odoo": "0.0.2"
+  }
+}
