@@ -1,0 +1,27 @@
+{
+  "name": "tools",
+  "version": "1.0.0",
+  "description": "Tools",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./Express/express"
+  },
+  "keywords": [
+    "Tools"
+  ],
+  "author": "Hsuching",
+  "license": "MIT",
+  "devDependencies": {
+    "csv-parser": "^1.11.0",
+    "excel-as-json": "^1.0.3",
+    "exceljs": "^0.2.35",
+    "fast-csv": "^2.3.0",
+    "node-xlsx": "^0.7.4",
+    "xlsx": "^0.8.0"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "nodejieba": "^2.2.3"
+  }
+}

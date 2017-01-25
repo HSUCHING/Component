@@ -22,19 +22,16 @@ app.use(cookieParser());
 app.use(session({
     secret: setting.cookieSecret,
     store: new MongoStore({
-        url: 'mongodb://localhost/'+setting.db
+        url: setting.mongodb + setting.db
     })
 }));
 
 //config express
 app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
 
 
 //config express middleware
-// app.use(function (req, res, next) {
-//     console.log('Time: ', Date.now());
-//     next();
-// });
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -42,13 +39,23 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //仅开发环境使用
 if (app.get("env") == "development") {
+    app.use(function (req, res, next) {
+        console.log('Time: ', Date.now());
+        next();
+    });
     console.log("development");
 }
 
 //访问控制
-app.use(authentication);
-app.use('/static', express.static('public'));
-app.use('/',admin);
+// app.use(authentication);
+app.use('/', admin);
+// app.use('/static', express.static('public'));
+app.get("/",function(req,res,next){
+    next();
+},function(req,res,next){
+    res.render('login.ejs', {name: 'BIEthicall'});
+});
+
 
 
 // app.post('/login', function (req, res) {

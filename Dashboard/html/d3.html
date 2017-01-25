@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../node_modules/d3/build/d3.js"></script>
+</head>
+<body>
+<button></button>
+</body>
+<script type="text/javascript">
+//    var dataset = [10, 20, 30, 40, 50];
+//
+//    var update = d3.select("body").selectAll("p").data(dataset, function (d) {
+//        return d;
+//    });
+//    var enter = update;
+//
+//    update.text(function (d, i) {
+//        return "update " + d;
+//    });
+//
+//    enter.enter()
+//            .append("p")
+//            .text(function (d, i) {
+//                return "enter " + d;
+//            });
+    var alphabet = "abcdefg".split("");
+    document.querySelector("button").addEventListener("click", function () {
+        var dataset=d3.shuffle(alphabet).slice(0, Math.floor(Math.random() * 7))
+                .sort();
+        console.log(dataset);
+
+        var update2 = d3.select("body").selectAll("p").data(dataset, function (d) {
+            return d;
+        });
+
+        update2.exit().remove();
+        update2.text(function (d, i) {
+            return "update " + d;
+        }).style('color', 'yellow');
+        update2.enter()
+                .append("p")
+                .text(function (d, i) {
+                    return "enter " + d;
+                })
+                .style('color', 'red');
+
+
+//        exit.exit()
+//                .text(function(d,i){
+//                    return "exit";
+//                });
+    });
+</script>
+</html>

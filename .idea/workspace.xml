@@ -2,19 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5a7cda27-9192-48ed-9059-dafa2f785386" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FakeData/temp/mockDataSet_1474448073933.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FakeData/temp/mockDataSet_1474448220329.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FakeData/temp/mockDataSet_1474448218560.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FakeData/temp/mockDataSet_1474448286142.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FakeData/temp/mockDataSet_1474447956722.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FakeData/temp/mockDataSet_1474448287425.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FakeData/temp/mockDataSet_1474447952555.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FakeData/temp/mockDataSet_1474447954955.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FakeData/temp/mockDataSet_1474448220976.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FakeData/temp/mockDataSet_1474448221512.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/FakeData/temp/mockDataSet_1474448217195.json" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AtlantisFramework/dist/HtmlElement.js" afterPath="$PROJECT_DIR$/AtlantisFramework/dist/HtmlElement.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/models/data2.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/models/dataSource_tmp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/server.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/index.js" afterPath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/indexBackup.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/admin/user.js" afterPath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/models/user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/package.json" afterPath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/package.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/admin.js" afterPath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/admin.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/admin/login.js" afterPath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/admin/login.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/admin/logout.js" afterPath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/admin/logout.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/admin/register.js" afterPath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/admin/register.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/authorize.js" afterPath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/authorize.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/setting.js" afterPath="$PROJECT_DIR$/BoehringerIngelheiminEthicall/setting.js" />
     </list>
     <ignored path="Component.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,83 +35,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/VueJS/package.json">
+      <file leaf-file-name="lineChart.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Dashboard/js/lineChart.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FakeData/data/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3872">
-              <caret line="176" column="40" selection-start-line="176" selection-start-column="30" selection-end-line="176" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GenerateData.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/FakeData/GenerateData.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="36" column="3" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/FakeData/server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="814">
-              <caret line="37" column="25" selection-start-line="37" selection-start-column="25" selection-end-line="37" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Ethicall-Frontend-API/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Demo.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/VueJS/Demo.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="vue.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/VueJS/node_modules/vue@1.0.28/dist/vue.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="22462">
-              <caret line="1025" column="14" selection-start-line="1025" selection-start-column="4" selection-end-line="1025" selection-end-column="14" />
+            <state relative-caret-position="367">
+              <caret line="184" column="14" selection-start-line="184" selection-start-column="14" selection-end-line="184" selection-end-column="14" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#0#43#0" expanded="false" />
+                <element signature="n#!!block;n#defineBodyClip#0;n#!!block;n#lineChart#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/VueJS/node_modules/vue@1.0.28/src/config.js">
+      <file leaf-file-name="sunburst.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Dashboard/js/sunburst.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="14" />
+            <state relative-caret-position="6424">
+              <caret line="453" column="29" selection-start-line="453" selection-start-column="29" selection-end-line="453" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#41#0" expanded="false" />
+                <element signature="e#55#8063#0" expanded="false" />
+                <element signature="n#!!block;n#initchart#0" expanded="false" />
+                <marker date="1483703394000" expanded="true" signature="18029:18116" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sunburst.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Dashboard/css/sunburst.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="484">
+              <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -123,9 +79,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package_json" />
+        <option value="HTML File" />
         <option value="CSS File" />
         <option value="JavaScript File" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -140,57 +96,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/snapterest/package.json" />
-        <option value="$PROJECT_DIR$/Snapterest/source/utils/__tests__/TweetUtils-test.js" />
-        <option value="$PROJECT_DIR$/Snapterest/source/utils/CollectionUtils.js" />
-        <option value="$PROJECT_DIR$/Snapterest/source/utils/CollectionUtils-test.js" />
-        <option value="$PROJECT_DIR$/Snapterest/source/utils/__tests__/CollectionUtils-test.js" />
-        <option value="$PROJECT_DIR$/Snapterest/source/components/__tests__/Header-test.js" />
-        <option value="$PROJECT_DIR$/Snapterest/source/components/__tests__/Button-test.js" />
-        <option value="$PROJECT_DIR$/react-essentials/code/chapter08/snapterest/package.json" />
-        <option value="$PROJECT_DIR$/Snapterest/package.json" />
-        <option value="$PROJECT_DIR$/Webpack2/index.html" />
-        <option value="$PROJECT_DIR$/Webpack2/content.js" />
-        <option value="$PROJECT_DIR$/Webpack2/package.json" />
-        <option value="$PROJECT_DIR$/Webpack2/entry.js" />
-        <option value="$PROJECT_DIR$/Webpack2/webpack.config.js" />
-        <option value="$PROJECT_DIR$/WebPack/webpack.config3.js" />
-        <option value="$PROJECT_DIR$/Webpack2/style.css" />
-        <option value="$PROJECT_DIR$/WebPack/src/html/index.html" />
-        <option value="$PROJECT_DIR$/WebPack/dist/js/test.html" />
-        <option value="$PROJECT_DIR$/WebPack/dist/html/index.html" />
-        <option value="$PROJECT_DIR$/WebPack/webpack.config.js" />
-        <option value="$PROJECT_DIR$/WebPack/src/js/content.js" />
-        <option value="$PROJECT_DIR$/WebPack/src/css/style.css" />
-        <option value="$PROJECT_DIR$/Node/package.json" />
-        <option value="$PROJECT_DIR$/Node/serverSimple.js" />
-        <option value="$PROJECT_DIR$/Ethicall-Frontend-API/public/index.html" />
-        <option value="$PROJECT_DIR$/Ethicall-Frontend-API/index.js" />
-        <option value="$PROJECT_DIR$/Ethicall-Frontend-API/public/ethicall.json" />
-        <option value="$PROJECT_DIR$/FakeData/package.json" />
-        <option value="$PROJECT_DIR$/FakeData/GenerateData.js" />
-        <option value="$PROJECT_DIR$/FakeData/data/dataFormat.js" />
-        <option value="$PROJECT_DIR$/Ethicall-Frontend-API/README.md" />
-        <option value="$PROJECT_DIR$/FakeData/node_modules/faker/build/build/locales/zh_CN/faker.zh_CN.js" />
-        <option value="$PROJECT_DIR$/FakeData/node_modules/faker/lib/random.js" />
-        <option value="$PROJECT_DIR$/FakeData/node_modules/faker/lib/locales/zh_CN/index.js" />
-        <option value="$PROJECT_DIR$/FakeData/data/data.json" />
-        <option value="$PROJECT_DIR$/FakeData/node_modules/faker/lib/index.js" />
-        <option value="$PROJECT_DIR$/FakeData/node_modules/faker/lib/locales/zh_CN/medicine/common_name.js" />
-        <option value="$PROJECT_DIR$/FakeData/node_modules/faker/lib/locales/zh_CN/medicine/name.js" />
-        <option value="$PROJECT_DIR$/FakeData/node_modules/faker/lib/locales/zh_CN/medicine/index.js" />
-        <option value="$PROJECT_DIR$/FakeData/node_modules/faker/lib/medicine.js" />
-        <option value="$PROJECT_DIR$/FakeData/mockDataSet_1474447118960.json" />
-        <option value="$PROJECT_DIR$/FakeData/mockDataSet_1474447667660.json" />
-        <option value="$PROJECT_DIR$/FakeData/mockDataSet_1474447670130.json" />
-        <option value="$PROJECT_DIR$/FakeData/mockDataSet_1474447749865.json" />
-        <option value="$PROJECT_DIR$/FakeData/data/dataGenerate.js" />
-        <option value="$PROJECT_DIR$/FakeData/server.js" />
-        <option value="$PROJECT_DIR$/FakeData/data/index.js" />
-        <option value="$PROJECT_DIR$/JSONEditor/jsoneditor.html" />
-        <option value="$PROJECT_DIR$/Ethicall-Frontend-API/package.json" />
-        <option value="$PROJECT_DIR$/VueJS/package.json" />
-        <option value="$PROJECT_DIR$/VueJS/Demo.html" />
+        <option value="internal/streams/lazy_transform.js" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/admin/login.js" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/models/user.js" />
+        <option value="internal/process/next_tick.js" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/models/data2.js" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/models/data.js" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/home.js" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/public/js/login.js" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/views/modify.ejs" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/authorize.js" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/admin/modify.js" />
+        <option value="$PROJECT_DIR$/GraphQL/package.json" />
+        <option value="$PROJECT_DIR$/GraphQL/mongo.js" />
+        <option value="$PROJECT_DIR$/GraphQL/schema.js" />
+        <option value="$PROJECT_DIR$/GraphQL/server.js" />
+        <option value="$PROJECT_DIR$/Tools/node_modules/pdftohtmljs/lib/presets/iphone.js" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/index.js" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/setting.js" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/models/dataSource.js" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/public/css/admin.css" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/views/login.ejs" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/public/js/report.js" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/views/dashboardReport.ejs" />
+        <option value="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/admin.js" />
+        <option value="$PROJECT_DIR$/Dashboard/css/style.css" />
+        <option value="$PROJECT_DIR$/Dashboard/data/data.tsv" />
+        <option value="$PROJECT_DIR$/Dashboard/html/Dashboard.html" />
+        <option value="$PROJECT_DIR$/Dashboard/js/dashboard.js" />
+        <option value="$PROJECT_DIR$/Dashboard/data/msldata.tsv" />
+        <option value="$PROJECT_DIR$/Dashboard/html/MultiSeriesLine.html" />
+        <option value="$PROJECT_DIR$/Dashboard/css/multiseriesline.css" />
+        <option value="$PROJECT_DIR$/Dashboard/css/crystalLine.css" />
+        <option value="$PROJECT_DIR$/Dashboard/html/CrystalLine.html" />
+        <option value="$PROJECT_DIR$/Dashboard/js/crystalLine.js" />
+        <option value="$PROJECT_DIR$/Dashboard/html/Demo.html" />
+        <option value="$PROJECT_DIR$/Dashboard/js/multiseriesline.js" />
+        <option value="$PROJECT_DIR$/Dashboard/css/demo.css" />
+        <option value="$PROJECT_DIR$/Dashboard/js/demo.js" />
+        <option value="$PROJECT_DIR$/Dashboard/html/c3demo.html" />
+        <option value="$PROJECT_DIR$/Dashboard/js/ats.js" />
+        <option value="$PROJECT_DIR$/Dashboard/node_modules/c3/c3.js" />
+        <option value="$PROJECT_DIR$/Dashboard/data/medicine.json" />
+        <option value="$PROJECT_DIR$/Dashboard/css/lineChart.css" />
+        <option value="$PROJECT_DIR$/Dashboard/html/LineChart.html" />
+        <option value="$PROJECT_DIR$/Dashboard/html/d3.html" />
+        <option value="$PROJECT_DIR$/Dashboard/data/medicine2.json" />
+        <option value="$PROJECT_DIR$/Dashboard/html/Sunburst.html" />
+        <option value="$PROJECT_DIR$/Dashboard/js/lineChart.js" />
+        <option value="$PROJECT_DIR$/Dashboard/js/a.js" />
+        <option value="$PROJECT_DIR$/Dashboard/css/sunburst.css" />
+        <option value="$PROJECT_DIR$/Dashboard/js/sunburst.js" />
       </list>
     </option>
   </component>
@@ -201,10 +157,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="160" />
-    <option name="y" value="115" />
-    <option name="width" value="960" />
-    <option name="height" value="557" />
+    <option name="width" value="1280" />
+    <option name="height" value="800" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -283,52 +237,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Component" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Component" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FakeData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Component" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Component" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="FakeData" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="data" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Component" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Component" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Ethicall-Frontend-API" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -347,38 +255,42 @@
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../ethicall_frontend" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../EthicallBlog" />
+    <property name="settings.editor.selected.configurable" value="liveEdit" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
+    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/WebPack" />
-      <recent name="$PROJECT_DIR$/snapterest" />
-      <recent name="$PROJECT_DIR$/snapterest/source" />
-      <recent name="$PROJECT_DIR$/snapterest/demo" />
-      <recent name="$PROJECT_DIR$/Upload" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/BoehringerIngelheiminEthicall/models" />
+      <recent name="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes" />
+      <recent name="$PROJECT_DIR$/BoehringerIngelheiminEthicall/routes/user" />
+      <recent name="$PROJECT_DIR$/Tools/Pdf" />
       <recent name="$PROJECT_DIR$/Snapterest/source/utils/__tests__" />
-      <recent name="$PROJECT_DIR$/Snapterest/source/utils" />
-      <recent name="$PROJECT_DIR$/react-essentials/code/chapter08/snapterest/source/utils/__tests__" />
-      <recent name="$PROJECT_DIR$/react-essentials/code/chapter08/snapterest/source/components" />
-      <recent name="$PROJECT_DIR$/react-essentials/code/chapter08/snapterest/source/utils" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Dashboard/html" />
+      <recent name="$PROJECT_DIR$/BoehringerIngelheiminEthicall/public/js" />
+      <recent name="$PROJECT_DIR$/BoehringerIngelheiminEthicall/models" />
+      <recent name="$PROJECT_DIR$/BoehringerIngelheiminEthicall/views" />
+      <recent name="$PROJECT_DIR$/BoehringerIngelheiminEthicall/public" />
     </key>
   </component>
-  <component name="RunManager" selected="Node.js.server.js (1)">
-    <configuration default="false" name="GenerateData.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="GenerateData.js" working-dir="$PROJECT_DIR$/FakeData">
+  <component name="RunManager" selected="JavaScript Debug.LineChart.html">
+    <configuration default="false" name="schema.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="schema.js" working-dir="$PROJECT_DIR$/GraphQL">
       <method />
     </configuration>
-    <configuration default="false" name="server.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/snapterest">
+    <configuration default="false" name="mongo.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="mongo.js" working-dir="$PROJECT_DIR$/GraphQL">
       <method />
     </configuration>
-    <configuration default="false" name="serverSimple.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="serverSimple.js" working-dir="$PROJECT_DIR$/Node">
+    <configuration default="false" name="server.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/GraphQL">
       <method />
     </configuration>
-    <configuration default="false" name="server.js (1)" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="server.js" working-dir="$PROJECT_DIR$/FakeData">
+    <configuration default="false" name="dataSource.js" type="NodeJSConfigurationType" factoryName="Node.js" temporary="true" path-to-node="project" path-to-js-file="dataSource.js" working-dir="$PROJECT_DIR$/BoehringerIngelheiminEthicall/models">
+      <method />
+    </configuration>
+    <configuration default="false" name="LineChart.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/Component/Dashboard/html/LineChart.html">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -434,18 +346,20 @@
       <recursive>false</recursive>
       <method />
     </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Node.js.GenerateData.js" />
-      <item index="1" class="java.lang.String" itemvalue="Node.js.server.js" />
-      <item index="2" class="java.lang.String" itemvalue="Node.js.serverSimple.js" />
-      <item index="3" class="java.lang.String" itemvalue="Node.js.server.js (1)" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Node.js.schema.js" />
+      <item index="1" class="java.lang.String" itemvalue="Node.js.mongo.js" />
+      <item index="2" class="java.lang.String" itemvalue="Node.js.server.js" />
+      <item index="3" class="java.lang.String" itemvalue="Node.js.dataSource.js" />
+      <item index="4" class="java.lang.String" itemvalue="JavaScript Debug.LineChart.html" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Node.js.server.js (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Node.js.GenerateData.js" />
-        <item index="2" class="java.lang.String" itemvalue="Node.js.serverSimple.js" />
-        <item index="3" class="java.lang.String" itemvalue="Node.js.server.js" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.LineChart.html" />
+        <item index="1" class="java.lang.String" itemvalue="Node.js.dataSource.js" />
+        <item index="2" class="java.lang.String" itemvalue="Node.js.server.js" />
+        <item index="3" class="java.lang.String" itemvalue="Node.js.schema.js" />
+        <item index="4" class="java.lang.String" itemvalue="Node.js.mongo.js" />
       </list>
     </recent_temporary>
   </component>
@@ -532,11 +446,56 @@
       <workItem from="1475636227250" duration="3813000" />
       <workItem from="1476000460398" duration="609000" />
       <workItem from="1476673595838" duration="2588000" />
+      <workItem from="1477041450247" duration="967000" />
+      <workItem from="1477042883202" duration="1208000" />
+      <workItem from="1477044194725" duration="24009000" />
+      <workItem from="1477364274830" duration="7445000" />
+      <workItem from="1477382121100" duration="3576000" />
+      <workItem from="1477470690940" duration="154000" />
+      <workItem from="1477640306523" duration="24000" />
+      <workItem from="1477640399352" duration="144000" />
+      <workItem from="1477641378361" duration="642000" />
+      <workItem from="1477642617784" duration="637000" />
+      <workItem from="1477667477769" duration="95000" />
+      <workItem from="1477667657744" duration="707000" />
+      <workItem from="1478349766027" duration="883000" />
+      <workItem from="1478589154692" duration="1154000" />
+      <workItem from="1478590361305" duration="11963000" />
+      <workItem from="1478843721990" duration="4247000" />
+      <workItem from="1478929367301" duration="126000" />
+      <workItem from="1479028558683" duration="3105000" />
+      <workItem from="1479106558609" duration="10047000" />
+      <workItem from="1479188012799" duration="11101000" />
+      <workItem from="1479268235900" duration="50595000" />
+      <workItem from="1479452859351" duration="20578000" />
+      <workItem from="1479660276263" duration="38951000" />
+      <workItem from="1479781866367" duration="15908000" />
+      <workItem from="1479813831341" duration="4069000" />
+      <workItem from="1479875937804" duration="4244000" />
+      <workItem from="1479890242064" duration="22828000" />
+      <workItem from="1479960923169" duration="27418000" />
+      <workItem from="1480326636407" duration="9620000" />
+      <workItem from="1480387526076" duration="8807000" />
+      <workItem from="1480473449444" duration="12783000" />
+      <workItem from="1480644634225" duration="10899000" />
+      <workItem from="1481080979184" duration="38000" />
+      <workItem from="1481188472868" duration="724000" />
+      <workItem from="1481999197168" duration="12187000" />
+      <workItem from="1482638775958" duration="19393000" />
+      <workItem from="1482810410679" duration="12318000" />
+      <workItem from="1482901090254" duration="22307000" />
+      <workItem from="1482996816615" duration="8976000" />
+      <workItem from="1483069399875" duration="11000" />
+      <workItem from="1483084840461" duration="39713000" />
+      <workItem from="1483467978537" duration="15453000" />
+      <workItem from="1483594652904" duration="14671000" />
+      <workItem from="1483928884519" duration="1568000" />
+      <workItem from="1484505397749" duration="1782000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="378414000" />
+    <option name="totallyTimeSpent" value="836489000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -548,45 +507,45 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="160" y="115" width="960" height="557" extended-state="0" />
-    <editor active="false" />
+    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <editor active="true" />
     <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24384432" sideWeight="0.6912" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.497358" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24338624" sideWeight="0.5837967" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3088" sideWeight="0.4879679" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28706327" sideWeight="0.49095607" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18696883" sideWeight="0.41620335" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26926133" sideWeight="0.3088" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39364034" sideWeight="0.46068308" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27608347" sideWeight="0.49086577" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.53833514" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.497358" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24338624" sideWeight="0.5837967" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2192" sideWeight="0.46068308" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31003383" sideWeight="0.4879679" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3904" sideWeight="0.41620335" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2192216" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3088" sideWeight="0.4879679" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39364034" sideWeight="0.46068308" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24917853" sideWeight="0.41620335" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.083097264" sideWeight="0.6912" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27846673" sideWeight="0.49086577" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27608347" sideWeight="0.49086577" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2875298" sideWeight="0.49095607" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58747995" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-    </layout>
-    <layout-to-restore>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.497358" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24338624" sideWeight="0.5837967" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31040564" sideWeight="0.4879679" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30890644" sideWeight="0.46068308" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24126269" sideWeight="0.41620335" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17358959" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32243517" sideWeight="0.49086577" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58747995" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.26926133" sideWeight="0.3088" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19407895" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -609,7 +568,19 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="24" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Tools/node_modules/pdftohtmljs/lib/pdftohtml.js</url>
+          <line>69</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/BoehringerIngelheiminEthicall/models/user.js</url>
+          <line>121</line>
+          <option name="timeStamp" value="127" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="229" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="NodeJSConfigurationType">
@@ -621,30 +592,393 @@
         <watch expression="__dirname" language="JavaScript" />
         <watch expression="req.param(&quot;version&quot;)" language="JavaScript" />
         <watch expression="req.params.version" language="JavaScript" />
+        <watch expression="userTask" language="JavaScript" />
       </configuration>
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/VueJS/package.json">
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/sunburst.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+            <element signature="e#55#8063#0" expanded="false" />
+            <element signature="n#!!block;n#initchart#0" expanded="false" />
+            <marker date="1483703394000" expanded="true" signature="18029:18116" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FakeData/data/index.js">
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/a.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3872">
-          <caret line="176" column="40" selection-start-line="176" selection-start-column="30" selection-end-line="176" selection-end-column="40" />
-          <folding />
+        <state relative-caret-position="2420">
+          <caret line="232" column="15" selection-start-line="232" selection-start-column="15" selection-end-line="232" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FakeData/GenerateData.js">
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/lineChart.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="36" column="3" selection-start-line="36" selection-start-column="3" selection-end-line="36" selection-end-column="3" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+            <element signature="n#!!block;n#defineBodyClip#0;n#!!block;n#lineChart#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/demo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="37" column="90" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/multiseriesline.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1254">
+          <caret line="57" column="28" selection-start-line="57" selection-start-column="28" selection-end-line="57" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/lineChart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+            <element signature="n#!!block;n#defineBodyClip#0;n#!!block;n#lineChart#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/html/LineChart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/css/lineChart.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/data/medicine.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1408">
+          <caret line="64" column="20" selection-start-line="64" selection-start-column="20" selection-end-line="64" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="704">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="36" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/demo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/lineChart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="4" column="4" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+            <element signature="n#!!block;n#defineBodyClip#0;n#!!block;n#lineChart#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/ats.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/html/c3demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/node_modules/c3/c3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143616">
+          <caret line="6528" column="0" selection-start-line="6528" selection-start-column="0" selection-end-line="6528" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/multiseriesline.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1452">
+          <caret line="68" column="23" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/data/msldata.tsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/css/multiseriesline.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/data/data.tsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/css/multiseriesline.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/data/msldata.tsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/html/Demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/html/Dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="50" selection-start-line="6" selection-start-column="50" selection-end-line="6" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/css/demo.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/html/MultiSeriesLine.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="37" selection-start-line="11" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/node_modules/d3/build/d3.node.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8030">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/node_modules/d3/build/d3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/html/c3demo.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="9" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/node_modules/c3/c3.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143616">
+          <caret line="6528" column="0" selection-start-line="6528" selection-start-column="0" selection-end-line="6528" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/data/data.tsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/crystalLine.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2502">
+          <caret line="239" column="9" selection-start-line="239" selection-start-column="9" selection-end-line="239" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/demo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="814">
+          <caret line="37" column="90" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="770">
+          <caret line="35" column="35" selection-start-line="35" selection-start-column="35" selection-end-line="35" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/html/LineChart.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/html/d3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="45" column="18" selection-start-line="45" selection-start-column="18" selection-end-line="45" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/css/lineChart.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="24" selection-start-line="22" selection-start-column="24" selection-end-line="22" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/data/medicine.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="66" column="3" selection-start-line="1" selection-start-column="2" selection-end-line="66" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/data/medicine2.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="632">
+          <caret line="67" column="3" selection-start-line="1" selection-start-column="2" selection-end-line="67" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/node_modules/d3/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2706">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/html/CrystalLine.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="46" selection-start-line="6" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/html/Sunburst.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/css/crystalLine.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/ats.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="632">
+          <caret line="379" column="27" selection-start-line="379" selection-start-column="27" selection-end-line="379" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/multiseriesline.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="46" column="8" selection-start-line="46" selection-start-column="7" selection-end-line="46" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/a.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="836">
+          <caret line="57" column="9" selection-start-line="57" selection-start-column="9" selection-end-line="57" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/lineChart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="184" column="14" selection-start-line="184" selection-start-column="14" selection-end-line="184" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+            <element signature="n#!!block;n#defineBodyClip#0;n#!!block;n#lineChart#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/js/sunburst.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6424">
+          <caret line="453" column="29" selection-start-line="453" selection-start-column="29" selection-end-line="453" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#41#0" expanded="false" />
+            <element signature="e#55#8063#0" expanded="false" />
+            <element signature="n#!!block;n#initchart#0" expanded="false" />
+            <marker date="1483703394000" expanded="true" signature="18029:18116" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dashboard/css/sunburst.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
           <folding />
         </state>
       </provider>

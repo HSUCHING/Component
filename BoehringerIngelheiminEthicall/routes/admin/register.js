@@ -1,7 +1,7 @@
 /**
  * Created by chinghsu on 16/11/16.
  */
-var User = require('./user');
+var User = require('./../../models/user');
 
 
 function register(req, res, next) {

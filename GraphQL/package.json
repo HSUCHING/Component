@@ -1,0 +1,21 @@
+{
+  "name": "nodegraphql",
+  "version": "1.0.0",
+  "description": "GraphQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "GraphQL"
+  ],
+  "author": "Hsuching",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-graphql": "^0.6.1",
+    "graphiql": "^0.8.0",
+    "graphql": "^0.8.2",
+    "mongoose": "^4.7.0"
+  }
+}

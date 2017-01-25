@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= name %></title>
+    <script src="/source/js/ejs.js"></script>
+</head>
+<body>
+<form action="/admin/modify" method="post">
+    <input type="text" name="user[name]" placeholder="Username"/>
+    <input type="password" name="user[psw]" placeholder="Password"/>
+    <input type="password" name="user[newPsw]" placeholder="newPassword"/>
+    <input type="submit" value="Change User"/>
+</form>
+</body>
+</html>

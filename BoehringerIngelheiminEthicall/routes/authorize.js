@@ -4,18 +4,14 @@
 
 /* GET users listing. */
 function authentication(req, res, next) {
-    // if (!req.session.user) {
-    //     return res.redirect('/register');
-    // }else{
-    //
-    // }
-    if(req.session.username != null){
-        console.log(req.session.username);
-    } else{
-        console.log("session为空");
+
+    if (req.session.username || req.path == '/admin' || req.path == '/admin/register' || req.path == '/admin/login' || req.path == '/admin/modify' || /^\/source\//.test(req.path)) {
+        // res.redirect("/home");
+        console.log(req.path);
+        next();
+    } else {
+        res.redirect("/admin");
     }
-    console.log("hello");
-    next();
 }
 
 module.exports = authentication;

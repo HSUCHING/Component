@@ -1,0 +1,19 @@
+{
+  "name": "dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Dashboard",
+    "D3"
+  ],
+  "author": "Hsuching",
+  "license": "MIT",
+  "dependencies": {
+    "d3": "^4.4.0",
+    "echarts": "^3.3.2"
+  }
+}

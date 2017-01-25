@@ -1,0 +1,8 @@
+.changePassword {
+    padding-left: 22px;
+    color: #334567;
+    cursor: pointer;
+}
+.modal-body {
+    padding-left: 130px !important;
+}

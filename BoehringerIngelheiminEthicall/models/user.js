@@ -4,6 +4,7 @@
 var bcrypt = require('bcrypt');
 var mongoose = require("mongoose");	//	顶会议用户组件
 var Schema = mongoose.Schema;	//	创建模型
+var setting = require('../setting');
 var userSchema = new Schema({
     username: String,
     password: String,
@@ -27,16 +28,40 @@ User.prototype.register = function (fn) {
 };
 
 User.prototype.save = function (fn) {
-    var db = mongoose.connect('mongodb://localhost:27017/ethicall');
+    var db = mongoose.connect(setting.mongodb + setting.db);
     var userModel = db.model('user', userSchema);
     var userEntity = new userModel(this);
     userEntity.save(function (err) {
         if (err) throw err;
         console.log("Task saved");
         fn(err);
+        mongoose.disconnect();
     });
-    mongoose.disconnect();
+
 };
+
+User.prototype.modify = function (updateData, fn) {
+    var db = mongoose.connect(setting.mongodb + setting.db);
+    var userModel = db.model('user', userSchema);
+    var self = this;
+    bcrypt.hash(updateData.newPsw, this.salt, function (err, hash) {
+        if (err) {
+            return fn(err);
+        } else {
+            userModel.update({_id: self.id}, {$set: {password: hash}}, function (err) {
+                if (err) {
+                    fn(err);
+                } else {
+                    fn();
+                }
+                mongoose.disconnect();
+            });
+        }
+    });
+
+
+};
+
 
 User.prototype.hasPassword = function (fn) {
     var user = this;
@@ -45,7 +70,7 @@ User.prototype.hasPassword = function (fn) {
             return fn(err);
         } else {
             user.salt = salt;
-            bcrypt.hash(user.password, salt, function (err,hash) {
+            bcrypt.hash(user.password, salt, function (err, hash) {
                 if (err) {
                     return fn(err);
                 } else {
@@ -67,35 +92,39 @@ User.getByName = function (name, fn) {
 };
 
 User.getId = function (name, fn) {
-    var db = mongoose.connect('mongodb://localhost:27017/ethicall');
+    var db = mongoose.connect(setting.mongodb + setting.db);
     var userTask = mongoose.model('user', userSchema); //	与users集合关联
-    userTask.findOne({'username': name}, fn);
-    mongoose.disconnect();
+    userTask.findOne({'username': name}, function (error,obj) {
+        mongoose.disconnect();
+        fn(error,obj);
+    });
+
 };
 
 User.get = function (obj, fn) {
     if (obj) {
         fn(null, new User({
             "id": obj._id,
-            "username": obj.username,
-            "password": obj.password
+            "name": obj.username,
+            "password": obj.password,
+            "salt": obj.salt
         }));
     } else {
-        return fn(null,{});
+        return fn(null, {});
     }
 };
 //
-// User.authenticate = function (name,pass,fn) {
-//     User.getByName(name,function(err,user){
-//         if(err) return fn(err);
-//         if(!user.id) return fn();
-//         bcrypt.hash(pass,user.salt,function(err,hash){
-//             if(err) return fn(err);
-//             if(hash==user.pass) return fn(null,user);
-//             fn();
-//         });
-//     });
-// };
+User.authenticate = function (name, pass, fn) {
+    User.getByName(name, function (err, user) {
+        if (err) return fn(err);
+        if (!user.id) return fn();
+        bcrypt.hash(pass, user.salt, function (err, hash) {
+            if (err) return fn(err);
+            if (hash == user.password) return fn(null, user);
+            fn();
+        });
+    });
+};
 User.submit = function (req, res, next) {
 
 };

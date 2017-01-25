@@ -1,0 +1,27 @@
+html,body{
+    padding:0;
+    margin:0;
+}
+svg{
+    margin:50px 0px;
+    /*position: absolute;*/
+    transform:translate(-50%,0);
+}
+.axis--y>path:nth-child(1){
+    stroke: #878;
+}
+.axis--y>g>line{
+    stroke: #AAA;
+}
+.axis--y>g:last-child>line{
+    stroke: #EEEEEE;
+}
+.axis--x>path:nth-child(1){
+    stroke: #878;
+}
+.axis--x>g>line{
+    stroke: #AAA;
+}
+.axis--x>g:last-child>line{
+    stroke: #EEEEEE;
+}
