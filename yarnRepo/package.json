@@ -1,0 +1,12 @@
+{
+  "name": "yarn",
+  "version": "0.0.1",
+  "description": "yarn",
+  "main": "index.js",
+  "repository": {},
+  "author": "Hsuching",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^15.4.2"
+  }
+}

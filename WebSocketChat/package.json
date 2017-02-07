@@ -1,0 +1,19 @@
+{
+  "name": "websocketchat",
+  "version": "0.0.1",
+  "description": "WebSocketChat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "WebSocketChat"
+  ],
+  "author": "Hsuching",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.14.1",
+    "jquery": "^3.1.1",
+    "socket.io": "^1.7.2"
+  }
+}

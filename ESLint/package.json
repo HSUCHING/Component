@@ -1,0 +1,41 @@
+{
+  "name": "eslint",
+  "version": "0.0.1",
+  "description": "eslint",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "eslint"
+  ],
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "sourceType": "module"
+    },
+    "globals":{
+      "var1":false
+    },
+    "rules": {
+      "indent": [
+        "error",
+        "tab"
+      ],
+      "linebreak-style": [
+        "error",
+        "unix"
+      ],
+      "quotes": [
+        "error",
+        "double"
+      ]
+    }
+  },
+  "author": "Hsuching",
+  "license": "MIT"
+}
