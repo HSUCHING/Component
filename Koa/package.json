@@ -1,0 +1,17 @@
+{
+  "name": "koa-demo",
+  "version": "0.0.1",
+  "description": "Koa",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Koa"
+  ],
+  "author": "Hsuching",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.0.0-alpha.8"
+  }
+}
