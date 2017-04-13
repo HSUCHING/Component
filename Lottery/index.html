@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <title>Ethicall 年会抽奖</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="./assets/animate.css">
+    <script type="text/javascript" src="./assets/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="content">
+        <div class="name"></div>
+        <div class="button">
+            <button onClick="start()">Start</button>
+        </div>
+    </div>
+    <div class="sidebar">
+        <div class="special none">
+            <span class="animated fadeIn">特别奖</span>
+            <ul></ul>
+        </div>
+        <div class="first none">
+            <span class="animated fadeIn">一等奖</span>
+            <ul></ul>
+        </div>
+        <div class="second none">
+            <span class="animated fadeIn">二等奖</span>
+            <ul></ul>
+        </div>
+        <div class="third none">
+            <span>三等奖</span>
+            <ul></ul>
+        </div>
+    </div>
+    <!-- <canvas id="canvas"></canvas> -->
+    <!-- <canvas id="world"></canvas>
+    <canvas id="canvas"></canvas> -->
+    <canvas id="world"></canvas>
+    <!-- <div id="confetti"></div> -->
+    <script type="text/javascript">
+        var names = [
+            "YS00001",
+            "YS00003",
+            "YS00005",
+            "YS00006",
+            "YS00007",
+            "YS00009",
+            "YS00010",
+            "YS00012",
+            "YS00014",
+            "YS00016",
+            "YS00017",
+            "YS00018",
+            "YS00022",
+            "YS00023",
+            "YS00024",
+            "YS00025",
+            "YS00026",
+            "YS00027",
+            "YS00028",
+            "YS00031",
+            "YS00032",
+            "YS00033",
+            "YS00034",
+            "YS00035",
+            "YS00036",
+            "YS00037",
+            "YS00038",
+            "YS00039",
+            "YS00044"
+        ];
+        var selected,
+            covered,
+            timer,
+            newtext,
+            replacements,
+            replacementsLen;
+        var count = names.length;
+        var content = document.querySelector('.name')
+        var btn = $('button')
+        var nameCount = 1;
+
+        function start() {
+            if (nameCount == 1) {
+                step();
+            }
+            clearConfetti();
+            var index = Math.random() * count | 0;
+            console.log(index);
+            var temp = names[index];
+            console.log(temp);
+            selected = temp.toUpperCase();
+            covered = selected.replace(/[^\s]/g, '_');
+            content.innerHTML = covered;
+            btn.addClass('hide')
+            timer = setInterval(decode, 50);
+        }
+
+        function clearConfetti() {
+            // var canvas = document.getElementById("world");
+            // var context = canvas.getContext("2d");
+            // context.clearRect(0, 0, canvas.width, canvas.height);
+            // cancelAnimationFrame(step);
+            $("#world").hide();
+        }
+
+        function resetNames(name) {
+            names = names.filter(function(n) {
+                return n !== name
+            })
+            count = names.length;
+        }
+
+        function decode() {
+            newtext = covered.split('').map(changeLetter()).join('');
+            if (newtext == selected) {
+                content.innerHTML = newtext;
+                addNode(newtext);
+                resetNames(newtext);
+                clearTimeout(timer);
+                if (nameCount <= 10) {
+                    btn.removeClass('hide');
+                }
+                return false;
+            }
+            covered = newtext;
+            content.innerHTML = newtext;
+        }
+
+        function addNode(name) {
+            var animateStyle = '';
+            var stage = '';
+            if (nameCount <= 5) {
+                stage = 'third';
+                $('.third').removeClass('none');
+                animateStyle = 'lightSpeedIn';
+            } else if (nameCount <= 8) {
+                stage = 'second';
+                $('.second').removeClass('none');
+                animateStyle = 'fadeInDown';
+            } else if (nameCount == 9) {
+                stage = 'first';
+                $('.first').removeClass('none');
+                animateStyle = 'fadeInLeft'
+            } else {
+                stage = 'special';
+                $('.special').removeClass('none');
+                animateStyle = 'fadeInLeft'
+            }
+            if (nameCount == 5 || nameCount == 8 || nameCount == 9 || nameCount == 10) {
+                $("#world").show();
+            }
+            var li = `<li class="animated ${animateStyle}">${name}</li>`
+            $(`.${stage} ul`).append(li)
+            nameCount++;
+        }
+
+        function changeLetter() {
+            replacements = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ%!@&*#_ ';
+            replacementsLen = replacements.length;
+            return function(letter, index, err) {
+                if (selected[index] == letter) {
+                    return letter;
+                } else {
+                    return replacements[Math.random() * replacementsLen | 0];
+                }
+            }
+        }
+
+        function winnerRevealed(text) {
+            alert(text);
+        }
+
+
+        // Confetti
+        (function() {
+            var COLORS, Confetti, NUM_CONFETTI, PI_2, canvas, confetti, context, drawCircle, i, range, resizeWindow, xpos;
+
+            NUM_CONFETTI = 350;
+
+            COLORS = [
+                [85, 71, 106],
+                [174, 61, 99],
+                [219, 56, 83],
+                [244, 92, 68],
+                [248, 182, 70]
+            ];
+
+            PI_2 = 2 * Math.PI;
+
+            canvas = document.getElementById("world");
+
+            context = canvas.getContext("2d");
+
+            window.w = 0;
+
+            window.h = 0;
+
+            resizeWindow = function() {
+                window.w = canvas.width = window.innerWidth;
+                return window.h = canvas.height = window.innerHeight;
+            };
+
+            window.addEventListener('resize', resizeWindow, false);
+
+            window.onload = function() {
+                return setTimeout(resizeWindow, 0);
+            };
+
+            range = function(a, b) {
+                return (b - a) * Math.random() + a;
+            };
+
+            drawCircle = function(x, y, r, style) {
+                context.beginPath();
+                context.arc(x, y, r, 0, PI_2, false);
+                context.fillStyle = style;
+                return context.fill();
+            };
+
+            xpos = 0.5;
+
+            document.onmousemove = function(e) {
+                return xpos = e.pageX / w;
+            };
+
+            window.requestAnimationFrame = (function() {
+                return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(callback) {
+                    return window.setTimeout(callback, 1000 / 60);
+                };
+            })();
+
+            Confetti = (function() {
+                function Confetti() {
+                    this.style = COLORS[~~range(0, 5)];
+                    this.rgb = "rgba(" + this.style[0] + "," + this.style[1] + "," + this.style[2];
+                    this.r = ~~range(2, 6);
+                    this.r2 = 2 * this.r;
+                    this.replace();
+                }
+
+                Confetti.prototype.replace = function() {
+                    this.opacity = 0;
+                    this.dop = 0.03 * range(1, 4);
+                    this.x = range(-this.r2, w - this.r2);
+                    this.y = range(-20, h - this.r2);
+                    this.xmax = w - this.r;
+                    this.ymax = h - this.r;
+                    this.vx = range(0, 2) + 8 * xpos - 5;
+                    return this.vy = 0.7 * this.r + range(-1, 1);
+                };
+
+                Confetti.prototype.draw = function() {
+                    var ref;
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.opacity += this.dop;
+                    if (this.opacity > 1) {
+                        this.opacity = 1;
+                        this.dop *= -1;
+                    }
+                    if (this.opacity < 0 || this.y > this.ymax) {
+                        this.replace();
+                    }
+                    if (!((0 < (ref = this.x) && ref < this.xmax))) {
+                        this.x = (this.x + this.xmax) % this.xmax;
+                    }
+                    return drawCircle(~~this.x, ~~this.y, this.r, this.rgb + "," + this.opacity + ")");
+                };
+
+                return Confetti;
+
+            })();
+
+            confetti = (function() {
+                var j, ref, results;
+                results = [];
+                for (i = j = 1, ref = NUM_CONFETTI; 1 <= ref ? j <= ref : j >= ref; i = 1 <= ref ? ++j : --j) {
+                    results.push(new Confetti);
+                }
+                return results;
+            })();
+
+            window.step = function() {
+                var c, j, len, results;
+                requestAnimationFrame(step);
+                context.clearRect(0, 0, w, h);
+                results = [];
+                for (j = 0, len = confetti.length; j < len; j++) {
+                    c = confetti[j];
+                    results.push(c.draw());
+                }
+                return results;
+            };
+
+
+        }).call(this);
+
+        // firework
+        $(function() {
+            var canvas = $('#canvas')[0];
+            canvas.width = $(window).width();
+            canvas.height = $(window).height();
+            var ctx = canvas.getContext('2d');
+
+            // resize
+            $(window).on('resize', function() {
+                canvas.width = $(window).width();
+                canvas.height = $(window).height();
+                ctx.fillStyle = 'rgba(0, 0, 200, 0.1)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+            });
+
+            // init
+            ctx.fillStyle = 'rgba(0, 0, 200, 0.1)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            // objects
+            var listFire = [];
+            var listFirework = [];
+            var fireNumber = 30;
+            var center = {
+                x: canvas.width / 2,
+                y: canvas.height / 2
+            };
+            var range = 500;
+            for (var i = 0; i < fireNumber; i++) {
+                var fire = {
+                    x: Math.random() * range / 2 - range / 4 + center.x,
+                    y: Math.random() * range * 2 + canvas.height,
+                    size: Math.random() + 0.5,
+                    fill: '#fd1',
+                    vx: Math.random() - 0.5,
+                    vy: -(Math.random() + 4) + 2,
+                    ax: Math.random() * 0.02 - 0.01,
+                    far: Math.random() * range + (center.y - range)
+                };
+                fire.base = {
+                    x: fire.x,
+                    y: fire.y,
+                    vx: fire.vx
+                };
+                //
+                listFire.push(fire);
+            }
+
+            function randColor() {
+                var r = Math.floor(Math.random() * 256);
+                var g = Math.floor(Math.random() * 256);
+                var b = Math.floor(Math.random() * 256);
+                var color = 'rgb($r, $g, $b)';
+                color = color.replace('$r', r);
+                color = color.replace('$g', g);
+                color = color.replace('$b', b);
+                return color;
+            }
+
+
+            function loop() {
+                requestAnimationFrame(loop);
+                update();
+                draw();
+            }
+
+            window.fire = function() {
+                loop();
+            }
+
+            // (function loop() {
+            //     requestAnimationFrame(loop);
+            //     update();
+            //     draw();
+            // })();
+            //
+
+            function update() {
+                for (var i = 0; i < listFire.length; i++) {
+                    var fire = listFire[i];
+                    //
+                    if (fire.y <= fire.far) {
+                        // case add firework
+                        var color = randColor();
+                        for (var i = 0; i < fireNumber * 5; i++) {
+                            var firework = {
+                                x: fire.x,
+                                y: fire.y,
+                                size: Math.random() + 1.5,
+                                fill: color,
+                                vx: Math.random() * 5 - 2.5,
+                                vy: Math.random() * -5 + 1.5,
+                                ay: 0.05,
+                                alpha: 1,
+                                life: Math.round(Math.random() * range / 2) + range / 2
+                            };
+                            firework.base = {
+                                life: firework.life,
+                                size: firework.size
+                            };
+                            listFirework.push(firework);
+                        }
+                        // reset
+                        fire.y = fire.base.y;
+                        fire.x = fire.base.x;
+                        fire.vx = fire.base.vx;
+                        fire.ax = Math.random() * 0.02 - 0.01;
+                    }
+                    //
+                    fire.x += fire.vx;
+                    fire.y += fire.vy;
+                    fire.vx += fire.ax;
+                }
+
+                for (var i = listFirework.length - 1; i >= 0; i--) {
+                    var firework = listFirework[i];
+                    if (firework) {
+                        firework.x += firework.vx;
+                        firework.y += firework.vy;
+                        firework.vy += firework.ay;
+                        firework.alpha = firework.life / firework.base.life;
+                        firework.size = firework.alpha * firework.base.size;
+                        firework.alpha = firework.alpha > 0.6 ? 1 : firework.alpha;
+                        //
+                        firework.life--;
+                        if (firework.life <= 0) {
+                            listFirework.splice(i, 1);
+                        }
+                    }
+                }
+            }
+
+            function draw() {
+                // clear
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.globalAlpha = 0.18;
+                ctx.fillStyle = 'rgba(0, 0, 0, 0)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                // re-draw
+                ctx.globalCompositeOperation = 'screen';
+                ctx.globalAlpha = 1;
+                ctx.fillStyle = '#000';
+                for (var i = 0; i < listFire.length; i++) {
+                    var fire = listFire[i];
+                    ctx.beginPath();
+                    ctx.arc(fire.x, fire.y, fire.size, 0, Math.PI * 2);
+                    ctx.closePath();
+                    // ctx.fillStyle = fire.fill;
+                    ctx.fillStyle = 'rgba(255, 211, 17, 0.1)';
+                    ctx.fill();
+                }
+
+                for (var i = 0; i < listFirework.length; i++) {
+                    var firework = listFirework[i];
+                    ctx.globalAlpha = firework.alpha;
+                    ctx.beginPath();
+                    ctx.arc(firework.x, firework.y, firework.size, 0, Math.PI * 2);
+                    ctx.closePath();
+                    ctx.fillStyle = firework.fill;
+                    ctx.fill();
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

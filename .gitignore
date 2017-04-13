@@ -2,6 +2,8 @@
 .idea
 */node_modules
 */build
+Koa/dist
+Koa/source
 
 WebPack/webpack.config-compiled.js.map
 WebPack/webpack.config3-compiled.js.map

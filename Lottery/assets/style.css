@@ -1,0 +1,103 @@
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('./back.png') no-repeat;
+    background-size: 100% 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.content {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    right: 0;
+    bottom: 15%;
+    transform: translateY(-50%);
+}
+
+#canvas {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.sidebar {
+    position: fixed;
+    display: flex;
+    right: 20px;
+    padding: 20px;
+    z-index: 99;
+}
+
+.special, .first, .second, .third {
+    padding-right: 40px;
+}
+
+ul {
+    font-size: 30px;
+    padding-top: 10px;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 0px;
+}
+
+li {
+    list-style: none;
+    padding-top: 5px;
+}
+
+html {
+    background: #000;
+    color: #fff;
+}
+
+.button {
+    text-align: center;
+}
+
+button {
+    background: transparent;
+    color: #fff;
+    border: 1px solid;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #fff;
+    color: #000;
+    transition: background 0.5s ease-in-out;
+}
+
+.name {
+    letter-spacing: 9px;
+    font-size: 100px;
+    text-align: center;
+    font-family: Courier;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.none {
+    display: none;
+}
