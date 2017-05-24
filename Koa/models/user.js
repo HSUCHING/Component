@@ -45,6 +45,7 @@ let UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  province: [String],
   views: {
     type: mongoose.Schema.Types.Mixed,
     default: {
@@ -182,6 +183,8 @@ User.get = function(obj, fn) {
       "id": obj._id,
       "name": obj.username,
       "password": obj.password,
+      "views": obj.views,
+      "email": obj.email,
       "salt": obj.salt
     }));
   } else {

@@ -16,13 +16,13 @@ const Store = require('./models/store');
 const bodyParser = require('koa-bodyparser');
 const convert = require('koa-convert');
 
-const staticPath = '/dist';
+const staticPath = '/static';
 app.use(convert(cors()));
 app.use(bodyParser());
 app.use(session({
 	store: new Store()
 }));
-// app.use(authentication);
+app.use(authentication);
 // app.use((ctx, next) => {
 // 			const start = new Date();
 // 			return next().then(() => {

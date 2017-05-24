@@ -5,10 +5,10 @@ router
   .get('/', function*(next) {
     this.redirect('/index.html');
   })
-  .get('/register', function*(next) {
-    this.redirect('/index.html');
-    // this.redirect("back");
-  })
+  // .get('/register', function*(next) {
+  //   this.redirect('/index.html');
+  //   // this.redirect("back");
+  // })
   .post('/register', function*(next) {
     if (this.session.user) {
       this.redirect('/index.html');
@@ -17,13 +17,13 @@ router
     }
     // yield next;
   })
-  .get('/login', function*(next) {
-    if (this.session.user) {
-      this.redirect('/index.html');
-    } else {
-      this.redirect('/index.html');
-    }
-  })
+  // .get('/login', function*(next) {
+  //   if (this.session.user) {
+  //     this.redirect('/index.html');
+  //   } else {
+  //     this.redirect('/index.html');
+  //   }
+  // })
   .post('/login', function*(next) {
     var self = this;
     yield new Promise(admin.login(self, next))
@@ -63,13 +63,13 @@ router
   .post('/update', function*(next) {
     admin.update(this, next);
   })
-  .get('/home', function*(next) {
-    if (this.session.user) {
-      this.redirect('/index.html');
-    } else {
-      this.redirect('/index.html');
-    }
-  })
+  // .get('/home', function*(next) {
+  //   if (this.session.user) {
+  //     this.redirect('/index.html');
+  //   } else {
+  //     this.redirect('/index.html');
+  //   }
+  // })
   .get('/*', function*(next) {
     // this.redirect('/home');
     this.redirect('/index.html');
@@ -86,8 +86,17 @@ router
 
 
 
-router.get('/logout', function*(next) {
-  this.session.user = null;
-  return this.redirect('/');
-});
+router
+  .get('/logout', function*(next) {
+    this.session.user = null;
+    return this.redirect('/');
+  })
+  .post('/logout', function*(next) {
+    // const result = yield {
+    //   logout: "logout"
+    // };
+    // this.body = result;
+  });
+
+
 module.exports = router;

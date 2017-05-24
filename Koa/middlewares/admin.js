@@ -13,11 +13,21 @@ admin.login = (ctx, next) => {
       } else {
         if (!user) {
           // ctx.redirect('/login');
+          resolve({
+            error: "401",
+            msg: "user error"
+          });
         } else {
           ctx.session.username = user.name;
           // ctx.redirect('/home');
           // ctx.body = user;
-          resolve(user);
+          let responseData = {
+            username: user.name,
+            email: user.email,
+            views: user.views,
+            province: user.province
+          }
+          resolve(responseData);
         }
       }
     });
@@ -41,6 +51,16 @@ admin.register = (ctx, next) => {
   //     }
   //   }
   // });
+
+  // dashboard: true, // DashBoard
+  // pageData: true, // 页面数据
+  // bisVisit: true, // 信使拜访数据汇总
+  // bisTerminal: true, // 区域终端购进汇总
+  // bisRepeat: true, // 区域重复购进汇总
+  // bisDetail: true, // 信使关注详情
+  // financialData: true, // 财务数据
+  // setting: true // 设置
+
   User.getByName(userInfo.name, function(err, user) {
     if (err) {
       ctx.status = 404;
@@ -52,8 +72,16 @@ admin.register = (ctx, next) => {
       let userInstance = new User({
         username: userInfo.name,
         password: userInfo.psw,
+        province: [],
         views: {
-          allowed: [1, 2, 3]
+          dashboard: true,
+          pageData: true,
+          bisVisit: true,
+          bisTerminal: true,
+          bisRepeat: true,
+          bisDetail: true,
+          financialData: true,
+          setting: true
         }
       });
       userInstance.register(function(err) {
