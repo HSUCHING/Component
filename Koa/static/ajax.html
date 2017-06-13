@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <script src='jquery.js' type='text/javascript'></script>
+</head>
+
+<body>
+    <button id="bt">登录</button>
+</body>
+<script type="text/javascript">
+    document.querySelector("#bt").addEventListener("click", function() {
+
+        jQuery.ajax({
+            url: "login",
+            type: "post",
+            data: {
+                user: {
+                    name: 'wuy',
+                    psw: '123456'
+                }
+            },
+            dataType: "json",
+            success: function(msg) {
+                console.log(data);
+            }
+        });
+        //     $.post("/login", {
+        //             user: {
+        //                 name: 'wuy',
+        //                 psw: '123456'
+        //             }
+        //         },
+        //         function(data) {
+        //             console.log(data);
+        //         }, "json");
+        // });
+    });
+</script>
+
+</html>

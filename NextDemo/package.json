@@ -1,0 +1,21 @@
+{
+  "name": "nextdemo",
+  "version": "1.0.0",
+  "description": "Next.js Demo",
+  "main": "index.js",
+  "dependencies": {
+    "next": "^2.4.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "next",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Next.js"
+  ],
+  "author": "Hsuching",
+  "license": "MIT"
+}

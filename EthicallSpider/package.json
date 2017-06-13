@@ -1,0 +1,21 @@
+{
+  "name": "ethicallspider",
+  "version": "0.0.1",
+  "description": "Ethicall Spider",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Ethicall",
+    "Spider"
+  ],
+  "author": "Hsuching",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.1",
+    "htmlparser2": "^3.9.2",
+    "node-inspector": "^1.1.1",
+    "superagent": "^3.5.2"
+  }
+}
