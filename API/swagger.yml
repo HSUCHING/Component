@@ -1,0 +1,213 @@
+# this is an example of the Uber API
+# as a demonstration of an API spec in YAML
+swagger: '2.0'
+info:
+  title: 医时-对账单
+  description: 医时对账单 API
+  version: "1.0.0"
+# the domain of the service
+host: api.ethicall.cn
+# will be prefixed to all paths
+basePath: /v1
+# array of all schemes that your API supports
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /statements/list/{status}/{name}:
+    get:
+      summary: 对账单接口
+      description: 通过用户id , 对账单状态 ,获取待确认对账单列表.如状态未传或空 返回该用户所有对账单(包括历史)
+      parameters:
+        - name: id
+          in: query
+          description: 用户账户id
+          required: true
+          type: integer
+          format: int64
+        - name: status
+          in: path
+          description: 对账单状态
+          required: true
+          type: integer
+          format: int32
+        - name: name
+          in: path
+          description: 对账单状态
+          required: true
+          type: integer
+          format: int32
+      tags:
+        - 账单
+        - 对账
+      responses:
+        200:
+          description: 待确定对账单概览 + 待确认对账单列表
+          schema:
+            $ref: '#/definitions/ToBeStatement'
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+#在对账单列表外包一层用于统计总金额
+  ToBeStatement:
+    description: 对账单列表的统计
+    type: object
+    required:
+      - amount_sum
+    example:
+      amount_sum: 100
+      items: []
+    properties:
+      amount_sum:
+        type: number
+        format: float
+        description: 对账单列表中的总金额
+      items:
+        type: array
+        description: 对账单列表
+        items:
+          "$ref": "#/definitions/StatementofAccount"
+
+  StatementofAccount:
+    description: 对账单
+    type: object
+    required:
+      - statement_id
+    properties:
+      statement_id:
+        type: integer
+        format: int64
+        description: 对账单 id
+      description:
+        type: string
+        description: 对账单描述
+      display_name:
+        type: string
+        description: 对账单显示名
+      statement_create_date:
+        type: string
+        format: date-time
+        description: 对账单创建日期
+      statement_start_date:
+        type: string
+        format: date-time
+        description: 对账单起始日期
+      statement_end_date:
+        type: string
+        format: date-time
+        description: 对账单结束日期
+      statement_account_amount:
+        type: number
+        format: float
+        description: 对账单金额
+      statement_sources:
+        type: array
+        description: 对账单资金来源列表 (有特殊状态的排序在前)
+        items:
+          "$ref": "#/definitions/StatementSources"
+      statement_statisitcs:
+        type: array
+        description: 统计列表
+        items:
+          "$ref": "#/definitions/StatementStatisitcs"
+#为了在界面完成复杂的分组
+  StatementSources:
+    description: 对账单资金来源分组
+    type: object
+    properties:
+      source_type:
+        type: string
+        description: 收入来源类型
+      source_name:
+        type: string
+        description: 来源名 (拜访:为医院名)
+      source_descripiton:
+        type: string
+        description: 来源注解 (拜访:为产品名,其他情况:空)
+      source_amount:
+        type: number
+        format: float
+        description: 来源金额
+      source_status:
+        type: string
+        description: 来源状态 (当指明细中包括特殊状态时返回需要显示的文字)
+      source_details:
+        type: array
+        items:
+          "$ref": "#/definitions/SourceDetail"
+
+  SourceDetail:
+    description: 资金来源明细
+    type: object
+    required:
+      - source_id
+    properties:
+      source_id:
+        type: integer
+        format: int64
+        description: 行为id
+      source_type_id:
+        type: integer
+        format: int32
+        description: 行为类型id (拜访,经纪人佣金,邀请,活动...)
+      source_type_name:
+        type: string
+        description: 行为类型名
+      source_name:
+        type: string
+        description: 行为名 (拜访:拜访的步骤 , 经纪人佣金:月份 , 活动:活动名 ,邀请:邀请名)
+      source_date:
+        type: string
+        format: date-time
+        description: 行为发生日期
+      source_amount:
+        type: number
+        format: float
+        description: 行为产生的金额
+      source_status:
+        type: string
+        description: 来源状态
+      #以下字段在非拜访情况下无用...
+      source_product:
+        type: string
+        description: 行为相关产品名
+      source_hospital:
+        type: string
+        description: 行为相关医院
+      source_doctor:
+        type: string
+        description: 行为相关医生
+#统计项可以根据数据控制, 但是字段只能是个数和合计
+  StatementStatisitcs:
+    description: 对账单统计
+    type: object
+    properties:
+      statisitcs_name:
+        type: string
+        description: 统计名称
+      statisitcs_count:
+        type: integer
+        format: int32
+        description: 统计个数
+      statisitcs_amount:
+        type: number
+        format: float
+        description: 统计金额
+      statisitcs_display_type:
+        type: integer
+        format: int32
+        description: 统计项显示类型
+
+  Error:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string

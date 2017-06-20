@@ -76,7 +76,7 @@ const getDetail = (doctor) => new Promise(resolve => {
 });
 
 async function spider(param, callback) {
-  for (var k = 2; k < param.metaData.cityInfo.length; k++) {
+  for (var k = 0; k < param.metaData.cityInfo.length; k++) {
     data.root.children[param.metaData.cityInfo[k].name] = [];
     var city = param.metaData.cityInfo[k].name;
     var cityLen = param.metaData.cityInfo[k].length;
